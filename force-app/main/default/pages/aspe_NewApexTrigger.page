@@ -1,0 +1,231 @@
+<apex:page standardcontroller="Apex_Trigger__c" extensions="aspe_NewApexTriggerExtension" tabStyle="Apex_Trigger__c" docType="html-5.0">
+    <style type="text/css">
+    select.padded option {
+        padding: 2px 20px 0 7px;
+        text-align:left;
+        width: 100%;
+    }
+    select.padded {
+        text-align: center;
+    }
+    table.frequency td {
+        text-align: center;
+        padding: 5px 7px 10px 10px
+    }
+    table .frequency-title td {
+        font-weight: bold;
+        font-size: 11px;
+        padding-bottom: 4px;
+    }
+    table.frequency td:nth-child(odd) {
+        background:#eaeaea;
+    }
+    </style>
+   	<apex:sectionHeader title="Apex Trigger" subtitle="New Apex Trigger" />
+    <apex:pageBlock title="Enter Order Details" mode="edit">
+        <apex:form id="myform" styleClass="myForm">
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageBlockSection title="Trigger Criteria" columns="1" collapsible="false" showHeader="true" >
+                    <apex:actionRegion >
+                        <apex:outputPanel id="criteriaPanel">
+                            <table class="detailList">
+                                <tr>
+                                    <td class="labelCol">
+                                        <apex:outputLabel value="Object Type" for="objectType" />
+                                    </td>
+                                    <td class="dataCol">
+                                        <div class="requiredInput">
+                                            <div class="requiredBlock"></div>
+                                            <apex:selectList id="objectType" value="{!apexTrigger.Object_Type__c}" size="1" multiselect="false">
+                                                <apex:selectOptions value="{!objectTypeOptions}" />
+                                                <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                            </apex:selectList>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><br /></td>
+                                </tr>
+                                <tr>
+                                    <td class="labelCol">
+                                        <apex:outputLabel value="Trigger Criteria" />
+                                    </td>
+                                    <td class="dataCol">
+                                        <table>
+                                        <tr>
+                                            <td>
+                                                <apex:outputLabel value="Field" for="criteriaField1" />
+                                            </td>
+                                            <td>
+                                                <apex:outputLabel value="Operator" for="operator1" />
+                                            </td>
+                                            <td>
+                                                <apex:outputLabel value="Value" for="value1" />
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <apex:selectList id="criteriaField1" value="{!apexTrigger.Criteria_Field_1__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                    <apex:selectOptions value="{!fieldOptions}" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                </apex:selectList>
+                                            </td>
+                                            <td>
+                                                <apex:selectList id="operator1" value="{!apexTrigger.Criteria_Operator_1__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                    <apex:selectOptions value="{!operatorOptions1}" />
+                                                </apex:selectList>
+                                            </td>
+                                            <td>
+                                                <apex:inputText id="value1" value="{!apexTrigger.Criteria_Value_1__c}" />
+                                            </td>
+                                            <td>
+                                                <strong>AND</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <apex:selectList id="criteriaField2" value="{!apexTrigger.Criteria_Field_2__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                    <apex:selectOptions value="{!fieldOptions}" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                </apex:selectList>
+                                            </td>
+                                            <td>
+                                                <apex:selectList id="operator2" value="{!apexTrigger.Criteria_Operator_2__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                    <apex:selectOptions value="{!operatorOptions2}" />
+                                                </apex:selectList>
+                                            </td>
+                                            <td>
+                                                <apex:inputText id="value2" value="{!apexTrigger.Criteria_Value_2__c}" />
+                                            </td>
+                                            <td>
+                                                <strong>AND</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <apex:selectList id="criteriaField3" value="{!apexTrigger.Criteria_Field_3__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                    <apex:selectOptions value="{!fieldOptions}" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                </apex:selectList>
+                                            </td>
+                                            <td>
+                                                <apex:selectList id="operator3" value="{!apexTrigger.Criteria_Operator_3__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                    <apex:selectOptions value="{!operatorOptions3}" />
+                                                </apex:selectList>
+                                            </td>
+                                            <td>
+                                                <apex:inputText id="value3" value="{!apexTrigger.Criteria_Value_3__c}" />
+                                            </td>
+                                            <td>
+                                                <strong>AND</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <apex:selectList id="criteriaField4" value="{!apexTrigger.Criteria_Field_4__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                    <apex:selectOptions value="{!fieldOptions}" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                </apex:selectList>
+                                            </td>
+                                            <td>
+                                                <apex:selectList id="operator4" value="{!apexTrigger.Criteria_Operator_4__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                    <apex:selectOptions value="{!operatorOptions4}" />
+                                                </apex:selectList>
+                                            </td>
+                                            <td>
+                                                <apex:inputText id="value4" value="{!apexTrigger.Criteria_Value_4__c}" />
+                                            </td>
+                                            <td>
+                                                <strong>AND</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <apex:selectList id="criteriaField5" value="{!apexTrigger.Criteria_Field_5__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                    <apex:selectOptions value="{!fieldOptions}" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                </apex:selectList>
+                                            </td>
+                                            <td>
+                                                <apex:selectList id="operator5" value="{!apexTrigger.Criteria_Operator_5__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                    <apex:selectOptions value="{!operatorOptions5}" />
+                                                </apex:selectList>
+                                            </td>
+                                            <td>
+                                                <apex:inputText id="value5" value="{!apexTrigger.Criteria_Value_5__c}" />
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><br /></td>
+                                </tr>
+                                <tr>
+                                    <td class="labelCol">
+                                        <apex:outputLabel value="Frequency" />
+                                    </td>
+                                    <td class="dataCol">
+                                        <table class="frequency" cellspacing="0" cellpadding="0">
+                                            <tr class="frequency-title">
+                                                <td>Minute</td>
+                                                <td>Hour</td>
+                                                <td>Day of Week</td>
+                                                <td>Day of Month</td>
+                                                <td>Month</td>
+                                            </tr>
+                                            <tr>
+                                        		<td>
+                                                    <apex:selectList id="freqMinute" value="{!minuteSelect}" size="10" multiselect="true"  styleClass="padded">
+                                                        <apex:selectOptions value="{!minuteOptions}" />
+                                                    	<!-- <apex:actionSupport event="onchange" rerender="criteriaPanel" /> -->
+                                                    </apex:selectList>
+                                                </td>
+                                        		<td>
+                                                    <apex:selectList id="freqHour" value="{!hourSelect}" size="10" multiselect="true" styleClass="padded">
+                                                        <apex:selectOptions value="{!hourOptions}" />
+                                                    </apex:selectList>
+                                                </td>
+                                        		<td>
+                                                    <apex:selectList id="freqDayWeek" value="{!dayWeekSelect}" size="10" multiselect="true" styleClass="padded">
+                                                        <apex:selectOptions value="{!dayWeekOptions}" />
+                                                    </apex:selectList>
+                                                </td>
+                                        		<td>
+                                                    <apex:selectList id="freqDayMonth" value="{!dayMonthSelect}" size="10" multiselect="true" styleClass="padded">
+                                                        <apex:selectOptions value="{!dayMonthOptions}" />
+                                                    </apex:selectList>
+                                                </td>
+                                        		<td>
+                                                    <apex:selectList id="freqMonth" value="{!monthSelect}" size="10" multiselect="true" styleClass="padded">
+                                                        <apex:selectOptions value="{!monthOptions}" />
+                                                    	<apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                    </apex:selectList>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><br /></td>
+                                </tr>
+                                <tr>
+                                    <td class="labelCol">
+                                        <apex:outputLabel value="Activate" for="isActive" />
+                                    </td>
+                                    <td class="dataCol" colspan="2">
+                                        <apex:inputField id="isActive" value="{!apexTrigger.Active__c}" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                </apex:actionRegion>
+            </apex:pageBlockSection>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>

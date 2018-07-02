@@ -1,0 +1,7 @@
+{
+    "orgName": "joseph Company",
+    "edition": "Developer",
+    "orgPreferences" : {
+        "disabled": ["S1DesktopEnabled"]
+    }
+}
