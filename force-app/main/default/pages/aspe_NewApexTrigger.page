@@ -183,7 +183,6 @@
                                         		<td>
                                                     <apex:selectList id="freqMinute" value="{!minuteSelect}" size="10" multiselect="true"  styleClass="padded">
                                                         <apex:selectOptions value="{!minuteOptions}" />
-                                                    	<!-- <apex:actionSupport event="onchange" rerender="criteriaPanel" /> -->
                                                     </apex:selectList>
                                                 </td>
                                         		<td>
@@ -204,7 +203,7 @@
                                         		<td>
                                                     <apex:selectList id="freqMonth" value="{!monthSelect}" size="10" multiselect="true" styleClass="padded">
                                                         <apex:selectOptions value="{!monthOptions}" />
-                                                    	<apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                    	<!-- <apex:actionSupport event="onchange" rerender="criteriaPanel" /> -->
                                                     </apex:selectList>
                                                 </td>
                                             </tr>
@@ -220,6 +219,15 @@
                                     </td>
                                     <td class="dataCol" colspan="2">
                                         <apex:inputField id="isActive" value="{!apexTrigger.Active__c}" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><br /></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <apex:commandButton action="{!save}" value="Save Trigger" id="saveButton"/>
                                     </td>
                                 </tr>
                             </table>

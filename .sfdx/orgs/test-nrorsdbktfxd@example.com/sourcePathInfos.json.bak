@@ -107,15 +107,15 @@
     [
         "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_NewApexTriggerExtension.cls",
         {
-            "state": "u",
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_NewApexTriggerExtension.cls",
             "isDirectory": false,
+            "size": 14697,
+            "modifiedTime": 1530293526000,
+            "changeTime": 1530293526000,
+            "contentHash": "baebe8f34e4334daf19de9ec52ced6df1653b10d",
             "isMetadataFile": false,
-            "size": 14700,
-            "modifiedTime": 1530293496000,
-            "changeTime": 1530293496000,
-            "isWorkspace": false,
-            "contentHash": "8a049556519dca4368dd725c194849d9475e6d67"
+            "state": "u",
+            "isWorkspace": false
         }
     ],
     [
@@ -601,15 +601,15 @@
     [
         "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/pages/aspe_NewApexTrigger.page",
         {
+            "state": "u",
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/pages/aspe_NewApexTrigger.page",
             "isDirectory": false,
-            "size": 15471,
-            "modifiedTime": 1530288315000,
-            "changeTime": 1530288315000,
-            "contentHash": "d9c992778e0083cc77a712ee2aedf12fec0ac243",
             "isMetadataFile": false,
-            "state": "u",
-            "isWorkspace": false
+            "size": 15812,
+            "modifiedTime": 1530558496000,
+            "changeTime": 1530558496000,
+            "isWorkspace": false,
+            "contentHash": "2a461b917f71e71933d263e042f0e3a1cceb711e"
         }
     ],
     [
@@ -662,14 +662,13 @@
         {
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger",
             "isDirectory": true,
-            "size": 408,
-            "modifiedTime": 1530217602000,
-            "changeTime": 1530217602000,
-            "contentHash": "c52fc34535029b3ad056894ffc274ea1b00208dd",
+            "size": 476,
+            "modifiedTime": 1530549962000,
+            "changeTime": 1530549962000,
+            "contentHash": "a7277ddc3e4b79be2bcea3489fd197389f6dc146",
             "isMetadataFile": false,
             "state": "u",
-            "isWorkspace": true,
-            "isArtifactRoot": false
+            "isWorkspace": true
         }
     ]
 ]

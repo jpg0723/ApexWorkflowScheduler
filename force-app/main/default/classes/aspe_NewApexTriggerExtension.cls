@@ -339,4 +339,62 @@ public class aspe_NewApexTriggerExtension {
         
         return options;
     }
+
+    private Boolean validateCriteria(Integer num) {
+        String field = '';
+        String operator = '';
+        String value = '';
+        if (num == 1) {
+            field = apexTrigger.Criteria_Field_1__c;
+            operator = apexTrigger.Criteria_Operator_1__c;
+            value = apexTrigger.Criteria_Value_1__c;
+        }
+        if (num == 2) {
+            field = apexTrigger.Criteria_Field_2__c;
+            operator = apexTrigger.Criteria_Operator_2__c;
+            value = apexTrigger.Criteria_Value_2__c;
+        }
+        if (num == 3) {
+            field = apexTrigger.Criteria_Field_3__c;
+            operator = apexTrigger.Criteria_Operator_3__c;
+            value = apexTrigger.Criteria_Value_3__c;
+        }
+        if (num == 4) {
+            field = apexTrigger.Criteria_Field_4__c;
+            operator = apexTrigger.Criteria_Operator_4__c;
+            value = apexTrigger.Criteria_Value_4__c;
+        }
+        if (num == 5) {
+            field = apexTrigger.Criteria_Field_5__c;
+            operator = apexTrigger.Criteria_Operator_5__c;
+            value = apexTrigger.Criteria_Value_5__c;
+        }
+        if ((field == null || field == '') && (operator == null || operator == '') && ( value == null || value == '')) return true;
+        if (field != null && field != '' && operator != null && operator != '' && value != null && value != '') {
+            Boolean listContainsOperator = false;
+            for (SelectOption so: operatorOptions(num)) {
+                if (so.getValue() == operator) listContainsOperator = true;
+            }
+            if (!listContainsOperator) return false;
+            return true;
+        }
+        return false;
+    }
+
+    private Boolean validate() {
+        if (!this.apexTrigger.Active__c) return true;
+        if (getNoSelectedObject()) return false;
+        for (Integer i = 1; i<=5; i++) {
+            if (!validateCriteria(i)) return false;
+        }
+        return true;
+    }
+
+    public PageReference save() {
+        Boolean valid = validate();
+        if (!valid) return null;
+        upsert this.apexTrigger;
+        PageReference pageRef = new PageReference('/'+this.apexTrigger.id);
+        return pageRef;
+    }
 }
