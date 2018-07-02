@@ -15,62 +15,62 @@
                 <label>All</label>
             </value>
             <value>
-                <fullName>January</fullName>
+                <fullName>1</fullName>
                 <default>false</default>
                 <label>January</label>
             </value>
             <value>
-                <fullName>February</fullName>
+                <fullName>2</fullName>
                 <default>false</default>
                 <label>February</label>
             </value>
             <value>
-                <fullName>March</fullName>
+                <fullName>3</fullName>
                 <default>false</default>
                 <label>March</label>
             </value>
             <value>
-                <fullName>April</fullName>
+                <fullName>4</fullName>
                 <default>false</default>
                 <label>April</label>
             </value>
             <value>
-                <fullName>May</fullName>
+                <fullName>5</fullName>
                 <default>false</default>
                 <label>May</label>
             </value>
             <value>
-                <fullName>June</fullName>
+                <fullName>6</fullName>
                 <default>false</default>
                 <label>June</label>
             </value>
             <value>
-                <fullName>July</fullName>
+                <fullName>7</fullName>
                 <default>false</default>
                 <label>July</label>
             </value>
             <value>
-                <fullName>August</fullName>
+                <fullName>8</fullName>
                 <default>false</default>
                 <label>August</label>
             </value>
             <value>
-                <fullName>September</fullName>
+                <fullName>9</fullName>
                 <default>false</default>
                 <label>September</label>
             </value>
             <value>
-                <fullName>October</fullName>
+                <fullName>10</fullName>
                 <default>false</default>
                 <label>October</label>
             </value>
             <value>
-                <fullName>November</fullName>
+                <fullName>11</fullName>
                 <default>false</default>
                 <label>November</label>
             </value>
             <value>
-                <fullName>December</fullName>
+                <fullName>12</fullName>
                 <default>false</default>
                 <label>December</label>
             </value>

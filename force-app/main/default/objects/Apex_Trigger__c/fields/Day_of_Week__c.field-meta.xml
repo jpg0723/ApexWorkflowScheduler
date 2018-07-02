@@ -15,37 +15,37 @@
                 <label>All</label>
             </value>
             <value>
-                <fullName>Monday</fullName>
+                <fullName>1</fullName>
                 <default>false</default>
                 <label>Monday</label>
             </value>
             <value>
-                <fullName>Tuesday</fullName>
+                <fullName>2</fullName>
                 <default>false</default>
                 <label>Tuesday</label>
             </value>
             <value>
-                <fullName>Wednesday</fullName>
+                <fullName>3</fullName>
                 <default>false</default>
                 <label>Wednesday</label>
             </value>
             <value>
-                <fullName>Thursday</fullName>
+                <fullName>4</fullName>
                 <default>false</default>
                 <label>Thursday</label>
             </value>
             <value>
-                <fullName>Friday</fullName>
+                <fullName>5</fullName>
                 <default>false</default>
                 <label>Friday</label>
             </value>
             <value>
-                <fullName>Saturday</fullName>
+                <fullName>6</fullName>
                 <default>false</default>
                 <label>Saturday</label>
             </value>
             <value>
-                <fullName>Sunday</fullName>
+                <fullName>7</fullName>
                 <default>false</default>
                 <label>Sunday</label>
             </value>

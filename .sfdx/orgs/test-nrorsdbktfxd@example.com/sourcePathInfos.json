@@ -107,15 +107,15 @@
     [
         "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_NewApexTriggerExtension.cls",
         {
-            "state": "u",
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_NewApexTriggerExtension.cls",
             "isDirectory": false,
-            "isMetadataFile": false,
             "size": 16899,
             "modifiedTime": 1530558903000,
             "changeTime": 1530558903000,
-            "isWorkspace": false,
-            "contentHash": "476cb0a20e8fa8355d373934d265515b378b6fa5"
+            "contentHash": "476cb0a20e8fa8355d373934d265515b378b6fa5",
+            "isMetadataFile": false,
+            "state": "u",
+            "isWorkspace": false
         }
     ],
     [
@@ -481,16 +481,14 @@
     [
         "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/objects/Apex_Trigger__c/fields/Day_of_Week__c.field-meta.xml",
         {
+            "state": "u",
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/objects/Apex_Trigger__c/fields/Day_of_Week__c.field-meta.xml",
             "isDirectory": false,
-            "size": 1811,
-            "modifiedTime": 1530217678000,
-            "changeTime": 1530217678000,
-            "contentHash": "8124abadc61d6369bb19ca6a1e5a567a92a55f52",
             "isMetadataFile": true,
-            "state": "u",
-            "isWorkspace": false,
-            "isArtifactRoot": false
+            "size": 1768,
+            "modifiedTime": 1530559331000,
+            "changeTime": 1530559331000,
+            "contentHash": "36b30aaf62095d2f11b83675c30f1132aab4689b"
         }
     ],
     [
@@ -556,16 +554,14 @@
     [
         "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/objects/Apex_Trigger__c/fields/Month__c.field-meta.xml",
         {
+            "state": "u",
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/objects/Apex_Trigger__c/fields/Month__c.field-meta.xml",
             "isDirectory": false,
-            "size": 2607,
-            "modifiedTime": 1530217678000,
-            "changeTime": 1530217678000,
-            "contentHash": "81b257c1c72514667517ddc8d7c8ea00e9615ba2",
             "isMetadataFile": true,
-            "state": "u",
-            "isWorkspace": false,
-            "isArtifactRoot": false
+            "size": 2548,
+            "modifiedTime": 1530559331000,
+            "changeTime": 1530559331000,
+            "contentHash": "9dc6bbaf3ff601472cd9b8fca66e7621e05cfc85"
         }
     ],
     [
