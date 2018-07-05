@@ -20,7 +20,28 @@
     table.frequency td:nth-child(odd) {
         background:#eaeaea;
     }
+    .labelCol em {
+        font-weight: 400;
+        font-size: 90%;
+    }
     </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        (function($) {
+            $(document).ready(function(){
+                $("select.limit-select").change(function () {
+                    var select = $(this).children("option:selected");
+                    if(select.length > 1) {
+                        for (var i = 1; i<select.length; i++) {
+                            select.eq(i).prop("selected", false);
+                        }
+                    }
+                });
+            });
+        })(jQuery);
+    </script>
+
    	<apex:sectionHeader title="Apex Trigger" subtitle="New Apex Trigger" />
     <apex:pageBlock title="Enter Order Details" mode="edit">
         <apex:form id="myform" styleClass="myForm">
@@ -168,7 +189,8 @@
                                 </tr>
                                 <tr>
                                     <td class="labelCol">
-                                        <apex:outputLabel value="Frequency" />
+                                        <apex:outputLabel value="Frequency" /><br />
+                                        <em>(May only run once per hour)</em>
                                     </td>
                                     <td class="dataCol">
                                         <table class="frequency" cellspacing="0" cellpadding="0">
@@ -181,7 +203,7 @@
                                             </tr>
                                             <tr>
                                         		<td>
-                                                    <apex:selectList id="freqMinute" value="{!minuteSelect}" size="10" multiselect="true"  styleClass="padded">
+                                                    <apex:selectList id="freqMinute" value="{!minuteSelect}" size="10" multiselect="true"  styleClass="padded limit-select">
                                                         <apex:selectOptions value="{!minuteOptions}" />
                                                     </apex:selectList>
                                                 </td>

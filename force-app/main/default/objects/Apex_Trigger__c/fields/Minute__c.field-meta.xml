@@ -3,17 +3,12 @@
     <fullName>Minute__c</fullName>
     <externalId>false</externalId>
     <label>Minute</label>
-    <required>true</required>
+    <required>false</required>
     <trackTrending>false</trackTrending>
-    <type>MultiselectPicklist</type>
+    <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
             <sorted>false</sorted>
-            <value>
-                <fullName>All</fullName>
-                <default>false</default>
-                <label>All</label>
-            </value>
             <value>
                 <fullName>0</fullName>
                 <default>true</default>
@@ -316,5 +311,4 @@
             </value>
         </valueSetDefinition>
     </valueSet>
-    <visibleLines>10</visibleLines>
 </CustomField>

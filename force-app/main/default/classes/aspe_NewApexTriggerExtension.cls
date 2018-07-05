@@ -7,21 +7,15 @@ public class aspe_NewApexTriggerExtension {
     public String dayMonthSelect;
     public String monthSelect;
     
-    public List<String> getMinuteSelect() {
-        List<String> stringReturn = new List<String>();
-        if (this.apexTrigger.Minute__c != null) {
-            for (String stringItem: this.apexTrigger.Minute__c.replaceAll('[\\[\\]]','').split(';')) {
-                stringReturn.add(stringItem);
-            }
-        }
-        return stringReturn;
+    public String getMinuteSelect() {
+        return this.apexTrigger.Minute__c;
     }
 
     public Void setMinuteSelect(String so) {
-        so = so.replaceAll(', ',';');
+        so = so.replaceAll(',.+','');
         this.apexTrigger.Minute__c = so;
     }
-
+    
     public List<String> getHourSelect() {
         List<String> stringReturn = new List<String>();
         if (this.apexTrigger.Hour__c != null) {

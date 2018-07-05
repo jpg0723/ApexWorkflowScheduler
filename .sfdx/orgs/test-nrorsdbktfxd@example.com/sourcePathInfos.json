@@ -76,15 +76,15 @@
     [
         "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_ApexTriggerExecute.cls",
         {
-            "state": "u",
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_ApexTriggerExecute.cls",
             "isDirectory": false,
-            "isMetadataFile": false,
             "size": 1758,
             "modifiedTime": 1530567686000,
             "changeTime": 1530567686000,
-            "isWorkspace": false,
-            "contentHash": "0fd310d3c3d225959a76952d9888a8dabb75dc6d"
+            "contentHash": "0fd310d3c3d225959a76952d9888a8dabb75dc6d",
+            "isMetadataFile": false,
+            "state": "u",
+            "isWorkspace": false
         }
     ],
     [
@@ -107,10 +107,10 @@
         {
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_NewApexTriggerExtension.cls",
             "isDirectory": false,
-            "size": 16899,
-            "modifiedTime": 1530558903000,
-            "changeTime": 1530558903000,
-            "contentHash": "476cb0a20e8fa8355d373934d265515b378b6fa5",
+            "size": 16632,
+            "modifiedTime": 1530811056000,
+            "changeTime": 1530811056000,
+            "contentHash": "1053bbcdb45219ecc121b67815a4000727c6576a",
             "isMetadataFile": false,
             "state": "u",
             "isWorkspace": false
@@ -539,14 +539,12 @@
         {
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/objects/Apex_Trigger__c/fields/Minute__c.field-meta.xml",
             "isDirectory": false,
-            "size": 9988,
-            "modifiedTime": 1530217678000,
-            "changeTime": 1530217678000,
-            "contentHash": "f4f3fcf74f3d7bcc6cfb2bdc17a583bab559b1ed",
+            "size": 9784,
+            "modifiedTime": 1530814397000,
+            "changeTime": 1530814397000,
+            "contentHash": "58174df04fac4d635823629a2b66f77c961ef9fc",
             "isMetadataFile": true,
-            "state": "u",
-            "isWorkspace": false,
-            "isArtifactRoot": false
+            "state": "u"
         }
     ],
     [
@@ -595,15 +593,15 @@
     [
         "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/pages/aspe_NewApexTrigger.page",
         {
+            "state": "u",
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/pages/aspe_NewApexTrigger.page",
             "isDirectory": false,
-            "size": 15812,
-            "modifiedTime": 1530558496000,
-            "changeTime": 1530558496000,
-            "contentHash": "2a461b917f71e71933d263e042f0e3a1cceb711e",
             "isMetadataFile": false,
-            "state": "u",
-            "isWorkspace": false
+            "size": 16507,
+            "modifiedTime": 1530814533000,
+            "changeTime": 1530814533000,
+            "isWorkspace": false,
+            "contentHash": "a1e4565ec5f4dcfe11513ccd586f6c3716004982"
         }
     ],
     [
