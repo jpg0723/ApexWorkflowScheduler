@@ -98,6 +98,16 @@
         <field>Apex_Trigger__c.Last_Run__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Apex_Trigger__c.Minute__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Apex_Trigger__c.Parsed_SQL__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Apex Trigger</label>
     <objectPermissions>

@@ -30,16 +30,20 @@
     <script>
         (function($) {
             $(document).ready(function(){
-                $("select.limit-select").change(function () {
-                    var select = $(this).children("option:selected");
-                    if(select.length > 1) {
-                        for (var i = 1; i<select.length; i++) {
-                            select.eq(i).prop("selected", false);
-                        }
-                    }
-                });
+                limitSelect();
             });
         })(jQuery);
+
+        function limitSelect() {
+            $("select.limit-select").change(function () {
+                var select = $(this).children("option:selected");
+                if(select.length > 1) {
+                    for (var i = 1; i<select.length; i++) {
+                        select.eq(i).prop("selected", false);
+                    }
+                }
+            });
+        }
     </script>
 
    	<apex:sectionHeader title="Apex Trigger" subtitle="New Apex Trigger" />
@@ -59,7 +63,7 @@
                                             <div class="requiredBlock"></div>
                                             <apex:selectList id="objectType" value="{!apexTrigger.Object_Type__c}" size="1" multiselect="false">
                                                 <apex:selectOptions value="{!objectTypeOptions}" />
-                                                <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
                                             </apex:selectList>
                                         </div>
                                     </td>
@@ -75,13 +79,13 @@
                                         <table>
                                         <tr>
                                             <td>
-                                                <apex:outputLabel value="Field" for="criteriaField1" />
+                                                <apex:outputLabel value="Field" />
                                             </td>
                                             <td>
-                                                <apex:outputLabel value="Operator" for="operator1" />
+                                                <apex:outputLabel value="Operator" />
                                             </td>
                                             <td>
-                                                <apex:outputLabel value="Value" for="value1" />
+                                                <apex:outputLabel value="Value" />
                                             </td>
                                             <td>
                                             </td>
@@ -90,7 +94,7 @@
                                             <td>
                                                 <apex:selectList id="criteriaField1" value="{!apexTrigger.Criteria_Field_1__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!fieldOptions}" />
-                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
@@ -109,7 +113,7 @@
                                             <td>
                                                 <apex:selectList id="criteriaField2" value="{!apexTrigger.Criteria_Field_2__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!fieldOptions}" />
-                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
@@ -128,7 +132,7 @@
                                             <td>
                                                 <apex:selectList id="criteriaField3" value="{!apexTrigger.Criteria_Field_3__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!fieldOptions}" />
-                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
@@ -147,7 +151,7 @@
                                             <td>
                                                 <apex:selectList id="criteriaField4" value="{!apexTrigger.Criteria_Field_4__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!fieldOptions}" />
-                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
@@ -166,7 +170,7 @@
                                             <td>
                                                 <apex:selectList id="criteriaField5" value="{!apexTrigger.Criteria_Field_5__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!fieldOptions}" />
-                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
@@ -176,6 +180,7 @@
                                             </td>
                                             <td>
                                                 <apex:inputText id="value5" value="{!apexTrigger.Criteria_Value_5__c}" />
+                                                <!-- <apex:input id="value5" value="{!criteriaValue1}" type="{!criteriaValue1Type}" ></apex:input> -->
                                             </td>
                                             <td>
                                             </td>
@@ -183,6 +188,21 @@
                                         </table>
                                     </td>
                                     <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><br /></td>
+                                </tr>
+                                <tr>
+                                    <td class="labelCol">
+                                        <apex:outputLabel value="Custom criteria logic" />
+                                    </td>
+                                    <td class="dataCol">
+                                        <!-- <apex:inputCheckbox value="{!useFilterLogic}">
+                                            <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
+                                        </apex:inputCheckbox> -->
+                                        <apex:inputField value="{!apexTrigger.Filter_Logic__c}" style="width: 200px;"></apex:inputField>
+                                        <!-- <apex:input value="{!filterLogic}" disabled="true" rendered="{!IF((useFilterLogic==false),true,false)}"></apex:input> -->
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><br /></td>
@@ -225,7 +245,7 @@
                                         		<td>
                                                     <apex:selectList id="freqMonth" value="{!monthSelect}" size="10" multiselect="true" styleClass="padded">
                                                         <apex:selectOptions value="{!monthOptions}" />
-                                                    	<!-- <apex:actionSupport event="onchange" rerender="criteriaPanel" /> -->
+                                                    	<!-- <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" /> -->
                                                     </apex:selectList>
                                                 </td>
                                             </tr>

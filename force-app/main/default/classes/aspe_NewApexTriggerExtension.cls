@@ -6,13 +6,66 @@ public class aspe_NewApexTriggerExtension {
     public String dayWeekSelect;
     public String dayMonthSelect;
     public String monthSelect;
+
+    // public String criteriaValue1Type;
+    // public String criteriaValue2Type;
+    // public String criteriaValue3Type;
+    // public String criteriaValue4Type;
+    // public String criteriaValue5Type;
+    // public String criteriaValue1;
+    // public String criteriaValue2;
+    // public String criteriaValue3;
+    // public String criteriaValue4;
+    // public String criteriaValue5;
+    // public Boolean useFilterLogic {get; set;}
+    // public String filterLogic;
+
+    // public String getCriteriaValue1() {
+    //     return apexTrigger.Criteria_Value_1__c;
+    // }
+
+    // public String getCriteriaValue2() {
+    //     return apexTrigger.Criteria_Value_2__c;
+    // }
+
+    // public String getCriteriaValue3() {
+    //     return apexTrigger.Criteria_Value_3__c;
+    // }
+
+    // public String getCriteriaValue4() {
+    //     return apexTrigger.Criteria_Value_4__c;
+    // }
+
+    // public String getCriteriaValue5() {
+    //     return apexTrigger.Criteria_Value_5__c;
+    // }
+
+    // public Void setCriteriaValue1(String value) {
+    //     apexTrigger.Criteria_Value_1__c = value;
+    // }
+
+    // public Void setCriteriaValue2(String value) {
+    //     apexTrigger.Criteria_Value_2__c = value;
+    // }
+
+    // public Void setCriteriaValue3(String value) {
+    //     apexTrigger.Criteria_Value_3__c = value;
+    // }
+
+    // public Void setCriteriaValue4(String value) {
+    //     apexTrigger.Criteria_Value_4__c = value;
+    // }
+
+    // public Void setCriteriaValue5(String value) {
+    //     apexTrigger.Criteria_Value_5__c = value;
+    // }
     
     public String getMinuteSelect() {
         return this.apexTrigger.Minute__c;
     }
 
     public Void setMinuteSelect(String so) {
-        so = so.replaceAll(',.+','');
+        so = so.replaceAll(',.+','').replaceAll('[\\[\\]]','');
         this.apexTrigger.Minute__c = so;
     }
     
@@ -75,6 +128,88 @@ public class aspe_NewApexTriggerExtension {
         so = so.replaceAll(', ',';');
         this.apexTrigger.Month__c = so;
     }
+
+    // public String getFilterLogic() {
+    //     System.debug(this.apexTrigger.Filter_Logic__c);
+    //     return this.apexTrigger.Filter_Logic__c;
+    // }
+
+    // public Void setFilterLogic(String filterLogic) {
+    // }
+
+    // public String getCriteriaValueType(Integer num) {
+    //     String fieldType = '';
+    //     String criteriaField = '';
+    //     if (num == 1) criteriaField = apexTrigger.Criteria_Value_1__c;
+    //     if (num == 2) criteriaField = apexTrigger.Criteria_Value_2__c;
+    //     if (num == 3) criteriaField = apexTrigger.Criteria_Value_3__c;
+    //     if (num == 4) criteriaField = apexTrigger.Criteria_Value_4__c;
+    //     if (num == 5) criteriaField = apexTrigger.Criteria_Value_5__c;
+    //     Schema.SObjectField field = Schema.describeSObjects(
+    //         new List<String>{apexTrigger.Object_Type__c}
+    //         )[0].fields.getMap().get(criteriaField);
+    //     if (field != null) fieldType = field.getDescribe().getType().name();
+    //     return fieldType;
+    // }
+
+    // public String getInputFieldType(String fieldType) {
+    //     if (fieldType == null) return 'text';
+    //     switch on fieldType {
+    //         when 'INTEGER' {
+    //             return 'number';
+    //         }
+    //         when 'DATE' {
+    //             return 'date';
+    //         }
+    //         when 'DATETIME' {
+    //             return 'datetime-local';
+    //         }
+    //         when 'TIME' {
+    //             return 'time';
+    //         }
+    //         when 'EMAIL' {
+    //             return 'email';
+    //         }
+    //         when 'PHONE' {
+    //             return 'tel';
+    //         }
+    //         when 'URL' {
+    //             return 'url';
+    //         }
+    //         when else {
+    //             return 'text';
+    //         }
+    //     }
+    // }
+
+    // public String getCriteriaValue1Type() {
+    //     String fieldType = getCriteriaValueType(1);
+    //     return getInputFieldType(fieldType);
+    // }
+
+    // public String getCriteriaValue1Type() {
+    //     return 'date';
+    // }
+
+    // public String getCriteriaValue2Type() {
+    //     String fieldType = getCriteriaValueType(2);
+    //     return getInputFieldType(fieldType);
+    // }
+
+    // public String getCriteriaValue3Type() {
+    //     String fieldType = getCriteriaValueType(3);
+    //     return getInputFieldType(fieldType);
+    // }
+
+    // public String getCriteriaValue4Type() {
+    //     String fieldType = getCriteriaValueType(4);
+    //     return getInputFieldType(fieldType);
+    // }
+
+    // public String getCriteriaValue5Type() {
+    //     String fieldType = getCriteriaValueType(5);
+    //     return getInputFieldType(fieldType);
+    // }
     
     public aspe_NewApexTriggerExtension(ApexPages.StandardController stdController) {
         this.apexTrigger = (Apex_Trigger__c)stdController.getRecord();
@@ -83,6 +218,7 @@ public class aspe_NewApexTriggerExtension {
         this.apexTrigger.Day_of_Week__c = getDefaultValueAsString(Schema.SObjectType.Apex_Trigger__c.fields.Day_of_Week__c);
         this.apexTrigger.Day_of_Month__c = getDefaultValueAsString(Schema.SObjectType.Apex_Trigger__c.fields.Day_of_Month__c);
         this.apexTrigger.Month__c = getDefaultValueAsString(Schema.SObjectType.Apex_Trigger__c.fields.Month__c);
+        this.apexTrigger.Filter_Logic__c = '1 AND 2 AND 3 AND 4 AND 5';
     }
     
     private String getDefaultValueAsString(Schema.DescribeFieldResult field) {
@@ -141,7 +277,7 @@ public class aspe_NewApexTriggerExtension {
             for (String key : fields.keySet()) {
                 DescribeFieldResult fieldDescribe = fields.get(key).getDescribe();
                 if (fieldDescribe.isAccessible()) {
-                    fieldOptions.add(new SelectOption(key,fieldDescribe.getLabel()+' ('+fieldDescribe.getName()+')'));
+                    fieldOptions.add(new SelectOption(fieldDescribe.getName(),fieldDescribe.getLabel()+' ('+fieldDescribe.getName()+')'));
                 }
             }
         } else {
@@ -179,8 +315,8 @@ public class aspe_NewApexTriggerExtension {
         operatorOptions.add(new SelectOption('','-Select an operator-'));
         operatorOptions.add(new SelectOption('=','Equals'));
         operatorOptions.add(new SelectOption('!=','Does Not Equal'));
-        operatorOptions.add(new SelectOption('IS NULL','Is Empty'));
-        operatorOptions.add(new SelectOption('IS NOT NULL','Is Not Empty'));
+        operatorOptions.add(new SelectOption('is_empty','Is Empty'));
+        operatorOptions.add(new SelectOption('is_not_empty','Is Not Empty'));
         
         String fieldType = '';
         
@@ -193,94 +329,25 @@ public class aspe_NewApexTriggerExtension {
                 when 'COMBOBOX' {
                     
                 }
-                when 'CURRENCY' {
-        			operatorOptions.add(new SelectOption('>','Greater Than'));
-        			operatorOptions.add(new SelectOption('>=','Greater Than or Equal To'));
-        			operatorOptions.add(new SelectOption('<','Less Than'));
-        			operatorOptions.add(new SelectOption('<=','Less Than or Equal To'));
-                }
-                when 'DATE' {
-        			operatorOptions.add(new SelectOption('>','Greater Than'));
-        			operatorOptions.add(new SelectOption('>=','Greater Than or Equal To'));
-        			operatorOptions.add(new SelectOption('<','Less Than'));
-        			operatorOptions.add(new SelectOption('<=','Less Than or Equal To'));
-                    
-                }
-                when 'DATETIME' {
-        			operatorOptions.add(new SelectOption('>','Greater Than'));
-        			operatorOptions.add(new SelectOption('>=','Greater Than or Equal To'));
-        			operatorOptions.add(new SelectOption('<','Less Than'));
-        			operatorOptions.add(new SelectOption('<=','Less Than or Equal To'));
-                    
-                }
-                when 'DOUBLE' {
-        			operatorOptions.add(new SelectOption('>','Greater Than'));
-        			operatorOptions.add(new SelectOption('>=','Greater Than or Equal To'));
-        			operatorOptions.add(new SelectOption('<','Less Than'));
-        			operatorOptions.add(new SelectOption('<=','Less Than or Equal To'));
-                    
-                }
-                when 'EMAIL' {
-        			operatorOptions.add(new SelectOption('contains','Contains'));
-        			operatorOptions.add(new SelectOption('starts_with','Starts With'));
-        			operatorOptions.add(new SelectOption('ends_with','Ends With'));
-                    
-                }
                 when 'ID' {
-                    
-                }
-                when 'INTEGER' {
-        			operatorOptions.add(new SelectOption('>','Greater Than'));
-        			operatorOptions.add(new SelectOption('>=','Greater Than or Equal To'));
-        			operatorOptions.add(new SelectOption('<','Less Than'));
-        			operatorOptions.add(new SelectOption('<=','Less Than or Equal To'));
                     
                 }
                 when 'MULTIPICKLIST' {
                     
                 }
-                when 'PERCENT' {
+                when 'CURRENCY','DATE','DATETIME','DOUBLE','INTEGER','PERCENT','TIME' {
         			operatorOptions.add(new SelectOption('>','Greater Than'));
         			operatorOptions.add(new SelectOption('>=','Greater Than or Equal To'));
         			operatorOptions.add(new SelectOption('<','Less Than'));
         			operatorOptions.add(new SelectOption('<=','Less Than or Equal To'));
-                    
                 }
-                when 'PHONE' {
+                when 'EMAIL','PHONE','PICKLIST','STRING','TEXTAREA','URL' {
         			operatorOptions.add(new SelectOption('contains','Contains'));
         			operatorOptions.add(new SelectOption('starts_with','Starts With'));
         			operatorOptions.add(new SelectOption('ends_with','Ends With'));
-                    
-                }
-                when 'PICKLIST' {
-        			operatorOptions.add(new SelectOption('contains','Contains'));
-        			operatorOptions.add(new SelectOption('starts_with','Starts With'));
-        			operatorOptions.add(new SelectOption('ends_with','Ends With'));
-                    
-                }
-                when 'STRING' {
-        			operatorOptions.add(new SelectOption('contains','Contains'));
-        			operatorOptions.add(new SelectOption('starts_with','Starts With'));
-        			operatorOptions.add(new SelectOption('ends_with','Ends With'));
-                    
-                }
-                when 'TEXTAREA' {
-        			operatorOptions.add(new SelectOption('contains','Contains'));
-        			operatorOptions.add(new SelectOption('starts_with','Starts With'));
-        			operatorOptions.add(new SelectOption('ends_with','Ends With'));
-                    
-                }
-                when 'TIME' {
-        			operatorOptions.add(new SelectOption('>','Greater Than'));
-        			operatorOptions.add(new SelectOption('>=','Greater Than or Equal To'));
-        			operatorOptions.add(new SelectOption('<','Less Than'));
-        			operatorOptions.add(new SelectOption('<=','Less Than or Equal To'));
-                    
-                }
-                when 'URL' {
-        			operatorOptions.add(new SelectOption('contains','Contains'));
-        			operatorOptions.add(new SelectOption('starts_with','Starts With'));
-        			operatorOptions.add(new SelectOption('ends_with','Ends With'));
+        			operatorOptions.add(new SelectOption('not_contains','Does not Contain'));
+        			operatorOptions.add(new SelectOption('not_starts_with','Does not Start With'));
+        			operatorOptions.add(new SelectOption('not_ends_with','Does not End With'));
                     
                 }
             }
@@ -334,7 +401,7 @@ public class aspe_NewApexTriggerExtension {
         return options;
     }
 
-    private Boolean validateCriteria(Integer num) {
+    private String validateCriteria(Integer num) {
         String field = '';
         String operator = '';
         String value = '';
@@ -363,32 +430,148 @@ public class aspe_NewApexTriggerExtension {
             operator = apexTrigger.Criteria_Operator_5__c;
             value = apexTrigger.Criteria_Value_5__c;
         }
-        if ((field == null || field == '') && (operator == null || operator == '') && ( value == null || value == '')) return true;
+        if ((field == null || field == '') && (operator == null || operator == '') && ( value == null || value == '')) return 'empty';
         if (field != null && field != '' && operator != null && operator != '' && value != null && value != '') {
             Boolean listContainsOperator = false;
             for (SelectOption so: operatorOptions(num)) {
                 if (so.getValue() == operator) listContainsOperator = true;
             }
-            if (!listContainsOperator) return false;
-            return true;
+            if (!listContainsOperator) return 'false';
+            return 'true';
         }
-        return false;
+        return 'false';
+    }
+
+    private String SQLifyValue(String criteriaField, String value) {
+            String fieldType = '';
+            Schema.SObjectField field = Schema.describeSObjects(
+                new List<String>{apexTrigger.Object_Type__c}
+            	)[0].fields.getMap().get(criteriaField);
+            if (field != null) fieldType = field.getDescribe().getType().name();
+            switch on fieldType {
+                when 'COMBOBOX' {
+                    
+                }
+                when 'ID' {
+                    
+                }
+                when 'DATE' {
+                    Datetime dt = Date.parse(value);
+                    return dt.format('yyyy-MM-dd');
+                }
+                when 'DATETIME' {
+                    Datetime dt = DateTime.parse(value);
+                    return dt.format('yyyy-MM-dd\'T\'HH:mm:ssXXX');
+                }
+                when 'TIME' {
+                    Datetime dt = DateTime.parse('1/1/2000 '+value);
+                    return dt.format('HH:mm:ss');
+                }
+                when 'MULTIPICKLIST' {
+                    
+                }
+            }
+            return '\''+value+'\'';
+    }
+
+    private String SQLifyCriteria(Integer num) {
+        String field = '';
+        String operator = '';
+        String value = '';
+        if (num == 1) {
+            field = apexTrigger.Criteria_Field_1__c;
+            operator = apexTrigger.Criteria_Operator_1__c;
+            value = apexTrigger.Criteria_Value_1__c;
+        }
+        if (num == 2) {
+            field = apexTrigger.Criteria_Field_2__c;
+            operator = apexTrigger.Criteria_Operator_2__c;
+            value = apexTrigger.Criteria_Value_2__c;
+        }
+        if (num == 3) {
+            field = apexTrigger.Criteria_Field_3__c;
+            operator = apexTrigger.Criteria_Operator_3__c;
+            value = apexTrigger.Criteria_Value_3__c;
+        }
+        if (num == 4) {
+            field = apexTrigger.Criteria_Field_4__c;
+            operator = apexTrigger.Criteria_Operator_4__c;
+            value = apexTrigger.Criteria_Value_4__c;
+        }
+        if (num == 5) {
+            field = apexTrigger.Criteria_Field_5__c;
+            operator = apexTrigger.Criteria_Operator_5__c;
+            value = apexTrigger.Criteria_Value_5__c;
+        }
+        switch on operator {
+           when 'contains' {
+               return field +' LIKE \'%'+value+'%\'';
+           }
+           when 'starts_with' {
+               return field +' LIKE \''+value+'%\'';
+           }
+           when 'ends_with' {
+               return field +' LIKE \'%'+value+'\'';
+           }
+           when 'not_contains' {
+               return 'NOT (' + field +' LIKE \'%'+value+'%\')';
+           }
+           when 'not_starts_with' {
+               return 'NOT (' + field +' LIKE \''+value+'%\')';
+           }
+           when 'not_ends_with' {
+               return 'NOT (' + field +' LIKE \'%'+value+'\')';
+           }
+           when 'is_empty' {
+               return '('+field+' = NULL OR '+field+' = \'\')';
+           }
+           when 'is_not_empty' {
+               return '('+field+' != NULL AND '+field+' != \'\')';
+           }
+           when else {
+               return field + ' ' + operator + ' '+SQLifyValue(field,value);
+           }
+        }
+
     }
 
     private Boolean validate() {
+        String cleanedFilterLogic = apexTrigger.Filter_Logic__c.replaceAll('[^() andor1-5]','');
+        String singleCriteria = '';
+        if (cleanedFilterLogic != apexTrigger.Filter_Logic__c) {
+            return false;
+        }
+        cleanedFilterLogic = cleanedFilterLogic.replaceAll('\\d', '{\\1}');
+        String sqlWhere = '';
         if (!this.apexTrigger.Active__c) return true;
         if (getNoSelectedObject()) return false;
         for (Integer i = 1; i<=5; i++) {
-            if (!validateCriteria(i)) return false;
+            singleCriteria = '';
+            switch on validateCriteria(i) {
+                when 'false' {
+                    return false;
+                }
+                when 'true' {
+                    if (sqlWhere.length() == 0) sqlWhere = ' WHERE '+cleanedFilterLogic;
+
+                    sqlWhere = sqlWhere.replaceAll('{'+String.valueOf(i)+'}', singleCriteria);
+                }
+                when 'empty' {
+                    cleanedFilterLogic = cleanedFilterLogic.replaceAll('(AND )?{'+String.valueOf(i)+'}', '');
+                    sqlWhere = sqlWhere.replaceAll('(AND )?{'+String.valueOf(i)+'}', '');
+                }
+            }
         }
+        String sql = 'SELECT Id FROM '+apexTrigger.Object_Type__c+sqlWhere;
         return true;
     }
 
     public PageReference save() {
         Boolean valid = validate();
         if (!valid) return null;
-        upsert this.apexTrigger;
-        PageReference pageRef = new PageReference('/'+this.apexTrigger.id);
-        return pageRef;
+        return null;
+        // upsert this.apexTrigger;
+        // PageReference pageRef = new PageReference('/'+this.apexTrigger.id);
+        // return pageRef;
     }
 }
