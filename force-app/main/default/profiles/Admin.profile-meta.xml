@@ -1,120 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
-        <apexClass>aspe_ApexTriggerExecute</apexClass>
+        <apexClass>aspe_WorkflowScheduleExecute</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>aspe_ApexTriggerSchedule</apexClass>
+        <apexClass>aspe_WorkflowScheduleSchedule</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>aspe_NewApexTriggerExtension</apexClass>
+        <apexClass>aspe_NewWorkflowScheduleExtension</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <custom>false</custom>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Active__c</field>
+        <field>Workflow_Schedule__c.Active__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Field_1__c</field>
+        <field>Workflow_Schedule__c.Criteria_Field_1__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Field_2__c</field>
+        <field>Workflow_Schedule__c.Criteria_Field_2__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Field_3__c</field>
+        <field>Workflow_Schedule__c.Criteria_Field_3__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Field_4__c</field>
+        <field>Workflow_Schedule__c.Criteria_Field_4__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Field_5__c</field>
+        <field>Workflow_Schedule__c.Criteria_Field_5__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Operator_1__c</field>
+        <field>Workflow_Schedule__c.Criteria_Operator_1__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Operator_2__c</field>
+        <field>Workflow_Schedule__c.Criteria_Operator_2__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Operator_3__c</field>
+        <field>Workflow_Schedule__c.Criteria_Operator_3__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Operator_4__c</field>
+        <field>Workflow_Schedule__c.Criteria_Operator_4__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Operator_5__c</field>
+        <field>Workflow_Schedule__c.Criteria_Operator_5__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Value_1__c</field>
+        <field>Workflow_Schedule__c.Criteria_Value_1__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Value_2__c</field>
+        <field>Workflow_Schedule__c.Criteria_Value_2__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Value_3__c</field>
+        <field>Workflow_Schedule__c.Criteria_Value_3__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Value_4__c</field>
+        <field>Workflow_Schedule__c.Criteria_Value_4__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Criteria_Value_5__c</field>
+        <field>Workflow_Schedule__c.Criteria_Value_5__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Filter_Logic__c</field>
+        <field>Workflow_Schedule__c.Filter_Logic__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Last_Run__c</field>
+        <field>Workflow_Schedule__c.Last_Run__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Apex_Trigger__c.Minute__c</field>
+        <field>Workflow_Schedule__c.Minute__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Apex_Trigger__c.Parsed_SQL__c</field>
+        <field>Workflow_Schedule__c.Parsed_SQL__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
-        <layout>Apex_Trigger__c-Apex Trigger Layout</layout>
+        <layout>Workflow_Schedule__c-Workflow Schedule Layout</layout>
     </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
@@ -122,15 +122,15 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>Apex_Trigger__c</object>
+        <object>Workflow_Schedule__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <pageAccesses>
-        <apexPage>aspe_NewApexTrigger</apexPage>
+        <apexPage>aspe_NewWorkflowSchedule</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <tabVisibilities>
-        <tab>Apex_Trigger__c</tab>
+        <tab>Workflow_Schedule__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Hour__c</fullName>
+    <fullName>Day_of_Month__c</fullName>
     <externalId>false</externalId>
-    <label>Hour</label>
+    <label>Day of Month</label>
     <required>true</required>
     <trackTrending>false</trackTrending>
     <type>MultiselectPicklist</type>
@@ -10,14 +10,9 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>All</fullName>
+                <fullName>*</fullName>
                 <default>true</default>
                 <label>All</label>
-            </value>
-            <value>
-                <fullName>0</fullName>
-                <default>false</default>
-                <label>0</label>
             </value>
             <value>
                 <fullName>1</fullName>
@@ -134,7 +129,47 @@
                 <default>false</default>
                 <label>23</label>
             </value>
+            <value>
+                <fullName>24</fullName>
+                <default>false</default>
+                <label>24</label>
+            </value>
+            <value>
+                <fullName>25</fullName>
+                <default>false</default>
+                <label>25</label>
+            </value>
+            <value>
+                <fullName>26</fullName>
+                <default>false</default>
+                <label>26</label>
+            </value>
+            <value>
+                <fullName>27</fullName>
+                <default>false</default>
+                <label>27</label>
+            </value>
+            <value>
+                <fullName>28</fullName>
+                <default>false</default>
+                <label>28</label>
+            </value>
+            <value>
+                <fullName>29</fullName>
+                <default>false</default>
+                <label>29</label>
+            </value>
+            <value>
+                <fullName>30</fullName>
+                <default>false</default>
+                <label>30</label>
+            </value>
+            <value>
+                <fullName>31</fullName>
+                <default>false</default>
+                <label>31</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
-    <visibleLines>5</visibleLines>
+    <visibleLines>10</visibleLines>
 </CustomField>

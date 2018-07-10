@@ -1,4 +1,4 @@
-<apex:page standardcontroller="Apex_Trigger__c" extensions="aspe_NewApexTriggerExtension" tabStyle="Apex_Trigger__c" docType="html-5.0">
+<apex:page standardcontroller="Workflow_Schedule__c" extensions="aspe_NewWorkflowScheduleExtension" tabStyle="Workflow_Schedule__c" docType="html-5.0">
     <style type="text/css">
     select.padded option {
         padding: 2px 20px 0 7px;
@@ -31,6 +31,7 @@
         (function($) {
             $(document).ready(function(){
                 limitSelect();
+                deselectAll();
             });
         })(jQuery);
 
@@ -39,15 +40,37 @@
                 var select = $(this).children("option:selected");
                 if(select.length > 1) {
                     for (var i = 1; i<select.length; i++) {
+                        console.log(select.eq(i).val());
                         select.eq(i).prop("selected", false);
                     }
                 }
             });
         }
+        function deselectAll() {
+            $("select.deselect-all").each(function () {
+                $(this).data('value',$(this).val());
+            });
+            $("select.deselect-all").change(function () {
+                var existingData = $(this).data('value');
+                var allSelected = false;
+                if (existingData.includes('*') || existingData.includes('0-23')) allSelected = true;
+                var select = $(this).children("option:selected");
+                if ( ( $(this).val().includes('*') || $(this).val().includes('0-23') ) &&  select.length > 1 ) {
+                    for (var i = 0; i<select.length; i++) {
+                        if (select.eq(i).val() == '*' || select.eq(i).val() == '0-23') {
+                            if (allSelected) select.eq(i).prop("selected", false);
+                        } else {
+                            if (!allSelected) select.eq(i).prop("selected", false);
+                        }
+                    }
+                }
+                $(this).data('value',$(this).val());
+            });
+        }
     </script>
 
-   	<apex:sectionHeader title="Apex Trigger" subtitle="New Apex Trigger" />
-    <apex:pageBlock title="Enter Order Details" mode="edit">
+   	<apex:sectionHeader title="Workflow Scheduler" subtitle="New Workflow Schedule" />
+    <apex:pageBlock title="Schedule Details" mode="edit">
         <apex:form id="myform" styleClass="myForm">
             <apex:pageMessages ></apex:pageMessages>
             <apex:pageBlockSection title="Trigger Criteria" columns="1" collapsible="false" showHeader="true" >
@@ -56,14 +79,28 @@
                             <table class="detailList">
                                 <tr>
                                     <td class="labelCol">
+                                        <apex:outputLabel value="Name" for="objectType" />
+                                    </td>
+                                    <td class="dataCol">
+                                        <div class="requiredInput">
+                                            <div class="requiredBlock"></div>
+                                            <apex:inputField id="name" value="{!workflowSchedule.Name}"></apex:inputField>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><br /></td>
+                                </tr>
+                                <tr>
+                                    <td class="labelCol">
                                         <apex:outputLabel value="Object Type" for="objectType" />
                                     </td>
                                     <td class="dataCol">
                                         <div class="requiredInput">
                                             <div class="requiredBlock"></div>
-                                            <apex:selectList id="objectType" value="{!apexTrigger.Object_Type__c}" size="1" multiselect="false">
+                                            <apex:selectList id="objectType" value="{!workflowSchedule.Object_Type__c}" size="1" multiselect="false">
                                                 <apex:selectOptions value="{!objectTypeOptions}" />
-                                                <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
+                                                <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect(); deselectAll();" />
                                             </apex:selectList>
                                         </div>
                                     </td>
@@ -92,18 +129,18 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <apex:selectList id="criteriaField1" value="{!apexTrigger.Criteria_Field_1__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                <apex:selectList id="criteriaField1" value="{!workflowSchedule.Criteria_Field_1__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!fieldOptions}" />
-                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect(); deselectAll();" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
-                                                <apex:selectList id="operator1" value="{!apexTrigger.Criteria_Operator_1__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                <apex:selectList id="operator1" value="{!workflowSchedule.Criteria_Operator_1__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!operatorOptions1}" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
-                                                <apex:inputText id="value1" value="{!apexTrigger.Criteria_Value_1__c}" />
+                                                <apex:inputText id="value1" value="{!workflowSchedule.Criteria_Value_1__c}" />
                                             </td>
                                             <td>
                                                 <strong>AND</strong>
@@ -111,18 +148,18 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <apex:selectList id="criteriaField2" value="{!apexTrigger.Criteria_Field_2__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                <apex:selectList id="criteriaField2" value="{!workflowSchedule.Criteria_Field_2__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!fieldOptions}" />
-                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect(); deselectAll();" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
-                                                <apex:selectList id="operator2" value="{!apexTrigger.Criteria_Operator_2__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                <apex:selectList id="operator2" value="{!workflowSchedule.Criteria_Operator_2__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!operatorOptions2}" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
-                                                <apex:inputText id="value2" value="{!apexTrigger.Criteria_Value_2__c}" />
+                                                <apex:inputText id="value2" value="{!workflowSchedule.Criteria_Value_2__c}" />
                                             </td>
                                             <td>
                                                 <strong>AND</strong>
@@ -130,18 +167,18 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <apex:selectList id="criteriaField3" value="{!apexTrigger.Criteria_Field_3__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                <apex:selectList id="criteriaField3" value="{!workflowSchedule.Criteria_Field_3__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!fieldOptions}" />
-                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect(); deselectAll();" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
-                                                <apex:selectList id="operator3" value="{!apexTrigger.Criteria_Operator_3__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                <apex:selectList id="operator3" value="{!workflowSchedule.Criteria_Operator_3__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!operatorOptions3}" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
-                                                <apex:inputText id="value3" value="{!apexTrigger.Criteria_Value_3__c}" />
+                                                <apex:inputText id="value3" value="{!workflowSchedule.Criteria_Value_3__c}" />
                                             </td>
                                             <td>
                                                 <strong>AND</strong>
@@ -149,18 +186,18 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <apex:selectList id="criteriaField4" value="{!apexTrigger.Criteria_Field_4__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                <apex:selectList id="criteriaField4" value="{!workflowSchedule.Criteria_Field_4__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!fieldOptions}" />
-                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect(); deselectAll();" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
-                                                <apex:selectList id="operator4" value="{!apexTrigger.Criteria_Operator_4__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                <apex:selectList id="operator4" value="{!workflowSchedule.Criteria_Operator_4__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!operatorOptions4}" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
-                                                <apex:inputText id="value4" value="{!apexTrigger.Criteria_Value_4__c}" />
+                                                <apex:inputText id="value4" value="{!workflowSchedule.Criteria_Value_4__c}" />
                                             </td>
                                             <td>
                                                 <strong>AND</strong>
@@ -168,19 +205,18 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <apex:selectList id="criteriaField5" value="{!apexTrigger.Criteria_Field_5__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                <apex:selectList id="criteriaField5" value="{!workflowSchedule.Criteria_Field_5__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!fieldOptions}" />
-                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
+                                                    <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect(); deselectAll();" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
-                                                <apex:selectList id="operator5" value="{!apexTrigger.Criteria_Operator_5__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
+                                                <apex:selectList id="operator5" value="{!workflowSchedule.Criteria_Operator_5__c}" size="1" multiselect="false" disabled="{!noSelectedObject}">
                                                     <apex:selectOptions value="{!operatorOptions5}" />
                                                 </apex:selectList>
                                             </td>
                                             <td>
-                                                <apex:inputText id="value5" value="{!apexTrigger.Criteria_Value_5__c}" />
-                                                <!-- <apex:input id="value5" value="{!criteriaValue1}" type="{!criteriaValue1Type}" ></apex:input> -->
+                                                <apex:inputText id="value5" value="{!workflowSchedule.Criteria_Value_5__c}" />
                                             </td>
                                             <td>
                                             </td>
@@ -194,14 +230,10 @@
                                 </tr>
                                 <tr>
                                     <td class="labelCol">
-                                        <apex:outputLabel value="Custom criteria logic" />
+                                        <apex:outputLabel value="Criteria logic" />
                                     </td>
                                     <td class="dataCol">
-                                        <!-- <apex:inputCheckbox value="{!useFilterLogic}">
-                                            <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" />
-                                        </apex:inputCheckbox> -->
-                                        <apex:inputField value="{!apexTrigger.Filter_Logic__c}" style="width: 200px;"></apex:inputField>
-                                        <!-- <apex:input value="{!filterLogic}" disabled="true" rendered="{!IF((useFilterLogic==false),true,false)}"></apex:input> -->
+                                        <apex:inputField value="{!workflowSchedule.Filter_Logic__c}" style="width: 200px;"></apex:inputField>
                                     </td>
                                 </tr>
                                 <tr>
@@ -228,24 +260,23 @@
                                                     </apex:selectList>
                                                 </td>
                                         		<td>
-                                                    <apex:selectList id="freqHour" value="{!hourSelect}" size="10" multiselect="true" styleClass="padded">
+                                                    <apex:selectList id="freqHour" value="{!hourSelect}" size="10" multiselect="true" styleClass="padded deselect-all">
                                                         <apex:selectOptions value="{!hourOptions}" />
                                                     </apex:selectList>
                                                 </td>
                                         		<td>
-                                                    <apex:selectList id="freqDayWeek" value="{!dayWeekSelect}" size="10" multiselect="true" styleClass="padded">
+                                                    <apex:selectList id="freqDayWeek" value="{!dayWeekSelect}" size="10" multiselect="true" styleClass="padded deselect-all">
                                                         <apex:selectOptions value="{!dayWeekOptions}" />
                                                     </apex:selectList>
                                                 </td>
                                         		<td>
-                                                    <apex:selectList id="freqDayMonth" value="{!dayMonthSelect}" size="10" multiselect="true" styleClass="padded">
+                                                    <apex:selectList id="freqDayMonth" value="{!dayMonthSelect}" size="10" multiselect="true" styleClass="padded deselect-all">
                                                         <apex:selectOptions value="{!dayMonthOptions}" />
                                                     </apex:selectList>
                                                 </td>
                                         		<td>
-                                                    <apex:selectList id="freqMonth" value="{!monthSelect}" size="10" multiselect="true" styleClass="padded">
+                                                    <apex:selectList id="freqMonth" value="{!monthSelect}" size="10" multiselect="true" styleClass="padded deselect-all">
                                                         <apex:selectOptions value="{!monthOptions}" />
-                                                    	<!-- <apex:actionSupport event="onchange" rerender="criteriaPanel" oncomplete="limitSelect();" /> -->
                                                     </apex:selectList>
                                                 </td>
                                             </tr>
@@ -260,7 +291,7 @@
                                         <apex:outputLabel value="Activate" for="isActive" />
                                     </td>
                                     <td class="dataCol" colspan="2">
-                                        <apex:inputField id="isActive" value="{!apexTrigger.Active__c}" />
+                                        <apex:inputField id="isActive" value="{!workflowSchedule.Active__c}" />
                                     </td>
                                 </tr>
                                 <tr>

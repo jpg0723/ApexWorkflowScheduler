@@ -3,5 +3,5 @@
     <apiVersion>15.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>aspe_NewApexTrigger</label>
+    <label>aspe_NewWorkflowSchedule</label>
 </ApexPage>

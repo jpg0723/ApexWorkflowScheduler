@@ -1,78 +1,25 @@
-public class aspe_NewApexTriggerExtension {
-    public Apex_Trigger__c apexTrigger {get; set;}
+public class aspe_NewWorkflowScheduleExtension {
+    public Workflow_Schedule__c workflowSchedule {get; set;}
     public String objectType {get; set;}
     public String minuteSelect;
     public String hourSelect;
     public String dayWeekSelect;
     public String dayMonthSelect;
     public String monthSelect;
-
-    // public String criteriaValue1Type;
-    // public String criteriaValue2Type;
-    // public String criteriaValue3Type;
-    // public String criteriaValue4Type;
-    // public String criteriaValue5Type;
-    // public String criteriaValue1;
-    // public String criteriaValue2;
-    // public String criteriaValue3;
-    // public String criteriaValue4;
-    // public String criteriaValue5;
-    // public Boolean useFilterLogic {get; set;}
-    // public String filterLogic;
-
-    // public String getCriteriaValue1() {
-    //     return apexTrigger.Criteria_Value_1__c;
-    // }
-
-    // public String getCriteriaValue2() {
-    //     return apexTrigger.Criteria_Value_2__c;
-    // }
-
-    // public String getCriteriaValue3() {
-    //     return apexTrigger.Criteria_Value_3__c;
-    // }
-
-    // public String getCriteriaValue4() {
-    //     return apexTrigger.Criteria_Value_4__c;
-    // }
-
-    // public String getCriteriaValue5() {
-    //     return apexTrigger.Criteria_Value_5__c;
-    // }
-
-    // public Void setCriteriaValue1(String value) {
-    //     apexTrigger.Criteria_Value_1__c = value;
-    // }
-
-    // public Void setCriteriaValue2(String value) {
-    //     apexTrigger.Criteria_Value_2__c = value;
-    // }
-
-    // public Void setCriteriaValue3(String value) {
-    //     apexTrigger.Criteria_Value_3__c = value;
-    // }
-
-    // public Void setCriteriaValue4(String value) {
-    //     apexTrigger.Criteria_Value_4__c = value;
-    // }
-
-    // public Void setCriteriaValue5(String value) {
-    //     apexTrigger.Criteria_Value_5__c = value;
-    // }
     
     public String getMinuteSelect() {
-        return this.apexTrigger.Minute__c;
+        return this.workflowSchedule.Minute__c;
     }
 
     public Void setMinuteSelect(String so) {
         so = so.replaceAll(',.+','').replaceAll('[\\[\\]]','');
-        this.apexTrigger.Minute__c = so;
+        this.workflowSchedule.Minute__c = so;
     }
     
     public List<String> getHourSelect() {
         List<String> stringReturn = new List<String>();
-        if (this.apexTrigger.Hour__c != null) {
-            for (String stringItem: this.apexTrigger.Hour__c.replaceAll('[\\[\\]]','').split(';')) {
+        if (this.workflowSchedule.Hour__c != null) {
+            for (String stringItem: this.workflowSchedule.Hour__c.replaceAll('[\\[\\]]','').split(';')) {
                 stringReturn.add(stringItem);
             }
         }
@@ -81,13 +28,13 @@ public class aspe_NewApexTriggerExtension {
 
     public Void setHourSelect(String so) {
         so = so.replaceAll(', ',';');
-        this.apexTrigger.Hour__c = so;
+        this.workflowSchedule.Hour__c = so;
     }
 
     public List<String> getDayWeekSelect() {
         List<String> stringReturn = new List<String>();
-        if (this.apexTrigger.Day_of_Week__c != null) {
-            for (String stringItem: this.apexTrigger.Day_of_Week__c.replaceAll('[\\[\\]]','').split(';')) {
+        if (this.workflowSchedule.Day_of_Week__c != null) {
+            for (String stringItem: this.workflowSchedule.Day_of_Week__c.replaceAll('[\\[\\]]','').split(';')) {
                 stringReturn.add(stringItem);
             }
         }
@@ -96,13 +43,13 @@ public class aspe_NewApexTriggerExtension {
 
     public Void setDayWeekSelect(String so) {
         so = so.replaceAll(', ',';');
-        this.apexTrigger.Day_of_Week__c = so;
+        this.workflowSchedule.Day_of_Week__c = so;
     }
 
     public List<String> getDayMonthSelect() {
         List<String> stringReturn = new List<String>();
-        if (this.apexTrigger.Day_of_Month__c != null) {
-            for (String stringItem: this.apexTrigger.Day_of_Month__c.replaceAll('[\\[\\]]','').split(';')) {
+        if (this.workflowSchedule.Day_of_Month__c != null) {
+            for (String stringItem: this.workflowSchedule.Day_of_Month__c.replaceAll('[\\[\\]]','').split(';')) {
                 stringReturn.add(stringItem);
             }
         }
@@ -111,13 +58,13 @@ public class aspe_NewApexTriggerExtension {
 
     public Void setDayMonthSelect(String so) {
         so = so.replaceAll(', ',';');
-        this.apexTrigger.Day_of_Month__c = so;
+        this.workflowSchedule.Day_of_Month__c = so;
     }
 
     public List<String> getMonthSelect() {
         List<String> stringReturn = new List<String>();
-        if (this.apexTrigger.Month__c != null) {
-            for (String stringItem: this.apexTrigger.Month__c.replaceAll('[\\[\\]]','').split(';')) {
+        if (this.workflowSchedule.Month__c != null) {
+            for (String stringItem: this.workflowSchedule.Month__c.replaceAll('[\\[\\]]','').split(';')) {
                 stringReturn.add(stringItem);
             }
         }
@@ -126,99 +73,17 @@ public class aspe_NewApexTriggerExtension {
 
     public Void setMonthSelect(String so) {
         so = so.replaceAll(', ',';');
-        this.apexTrigger.Month__c = so;
+        this.workflowSchedule.Month__c = so;
     }
-
-    // public String getFilterLogic() {
-    //     System.debug(this.apexTrigger.Filter_Logic__c);
-    //     return this.apexTrigger.Filter_Logic__c;
-    // }
-
-    // public Void setFilterLogic(String filterLogic) {
-    // }
-
-    // public String getCriteriaValueType(Integer num) {
-    //     String fieldType = '';
-    //     String criteriaField = '';
-    //     if (num == 1) criteriaField = apexTrigger.Criteria_Value_1__c;
-    //     if (num == 2) criteriaField = apexTrigger.Criteria_Value_2__c;
-    //     if (num == 3) criteriaField = apexTrigger.Criteria_Value_3__c;
-    //     if (num == 4) criteriaField = apexTrigger.Criteria_Value_4__c;
-    //     if (num == 5) criteriaField = apexTrigger.Criteria_Value_5__c;
-    //     Schema.SObjectField field = Schema.describeSObjects(
-    //         new List<String>{apexTrigger.Object_Type__c}
-    //         )[0].fields.getMap().get(criteriaField);
-    //     if (field != null) fieldType = field.getDescribe().getType().name();
-    //     return fieldType;
-    // }
-
-    // public String getInputFieldType(String fieldType) {
-    //     if (fieldType == null) return 'text';
-    //     switch on fieldType {
-    //         when 'INTEGER' {
-    //             return 'number';
-    //         }
-    //         when 'DATE' {
-    //             return 'date';
-    //         }
-    //         when 'DATETIME' {
-    //             return 'datetime-local';
-    //         }
-    //         when 'TIME' {
-    //             return 'time';
-    //         }
-    //         when 'EMAIL' {
-    //             return 'email';
-    //         }
-    //         when 'PHONE' {
-    //             return 'tel';
-    //         }
-    //         when 'URL' {
-    //             return 'url';
-    //         }
-    //         when else {
-    //             return 'text';
-    //         }
-    //     }
-    // }
-
-    // public String getCriteriaValue1Type() {
-    //     String fieldType = getCriteriaValueType(1);
-    //     return getInputFieldType(fieldType);
-    // }
-
-    // public String getCriteriaValue1Type() {
-    //     return 'date';
-    // }
-
-    // public String getCriteriaValue2Type() {
-    //     String fieldType = getCriteriaValueType(2);
-    //     return getInputFieldType(fieldType);
-    // }
-
-    // public String getCriteriaValue3Type() {
-    //     String fieldType = getCriteriaValueType(3);
-    //     return getInputFieldType(fieldType);
-    // }
-
-    // public String getCriteriaValue4Type() {
-    //     String fieldType = getCriteriaValueType(4);
-    //     return getInputFieldType(fieldType);
-    // }
-
-    // public String getCriteriaValue5Type() {
-    //     String fieldType = getCriteriaValueType(5);
-    //     return getInputFieldType(fieldType);
-    // }
     
-    public aspe_NewApexTriggerExtension(ApexPages.StandardController stdController) {
-        this.apexTrigger = (Apex_Trigger__c)stdController.getRecord();
-        this.apexTrigger.Minute__c = getDefaultValueAsString(Schema.SObjectType.Apex_Trigger__c.fields.Minute__c);
-        this.apexTrigger.Hour__c = getDefaultValueAsString(Schema.SObjectType.Apex_Trigger__c.fields.Hour__c);
-        this.apexTrigger.Day_of_Week__c = getDefaultValueAsString(Schema.SObjectType.Apex_Trigger__c.fields.Day_of_Week__c);
-        this.apexTrigger.Day_of_Month__c = getDefaultValueAsString(Schema.SObjectType.Apex_Trigger__c.fields.Day_of_Month__c);
-        this.apexTrigger.Month__c = getDefaultValueAsString(Schema.SObjectType.Apex_Trigger__c.fields.Month__c);
-        this.apexTrigger.Filter_Logic__c = '1 AND 2 AND 3 AND 4 AND 5';
+    public aspe_NewWorkflowScheduleExtension(ApexPages.StandardController stdController) {
+        this.workflowSchedule = (Workflow_Schedule__c)stdController.getRecord();
+        this.workflowSchedule.Minute__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Minute__c);
+        this.workflowSchedule.Hour__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Hour__c);
+        this.workflowSchedule.Day_of_Week__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Day_of_Week__c);
+        this.workflowSchedule.Day_of_Month__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Day_of_Month__c);
+        this.workflowSchedule.Month__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Month__c);
+        this.workflowSchedule.Filter_Logic__c = '1 AND 2 AND 3 AND 4 AND 5';
     }
     
     private String getDefaultValueAsString(Schema.DescribeFieldResult field) {
@@ -262,7 +127,7 @@ public class aspe_NewApexTriggerExtension {
     }
     
     public Boolean getNoSelectedObject() {
-        if (apexTrigger.Object_Type__c == '' || apexTrigger.Object_Type__c == null) return true;
+        if (workflowSchedule.Object_Type__c == '' || workflowSchedule.Object_Type__c == null) return true;
         else return false;
     }
     
@@ -272,7 +137,7 @@ public class aspe_NewApexTriggerExtension {
         
         if (!getNoSelectedObject()) {
             Map<String, Schema.SObjectField> fields = Schema.describeSObjects(
-                new List<String>{apexTrigger.Object_Type__c}
+                new List<String>{workflowSchedule.Object_Type__c}
             	)[0].fields.getMap();
             for (String key : fields.keySet()) {
                 DescribeFieldResult fieldDescribe = fields.get(key).getDescribe();
@@ -305,11 +170,11 @@ public class aspe_NewApexTriggerExtension {
     
     public List<SelectOption> operatorOptions(Integer num) {
         String criteriaField;
-        if (num == 1) criteriaField = apexTrigger.Criteria_Field_1__c;
-        if (num == 2) criteriaField = apexTrigger.Criteria_Field_2__c;
-        if (num == 3) criteriaField = apexTrigger.Criteria_Field_3__c;
-        if (num == 4) criteriaField = apexTrigger.Criteria_Field_4__c;
-        if (num == 5) criteriaField = apexTrigger.Criteria_Field_5__c;
+        if (num == 1) criteriaField = workflowSchedule.Criteria_Field_1__c;
+        if (num == 2) criteriaField = workflowSchedule.Criteria_Field_2__c;
+        if (num == 3) criteriaField = workflowSchedule.Criteria_Field_3__c;
+        if (num == 4) criteriaField = workflowSchedule.Criteria_Field_4__c;
+        if (num == 5) criteriaField = workflowSchedule.Criteria_Field_5__c;
         
     	List<SelectOption> operatorOptions = new List<SelectOption>();
         operatorOptions.add(new SelectOption('','-Select an operator-'));
@@ -322,7 +187,7 @@ public class aspe_NewApexTriggerExtension {
         
         if (!getNoSelectedObject() && criteriaField != null && criteriaField != '') {
             Schema.SObjectField field = Schema.describeSObjects(
-                new List<String>{apexTrigger.Object_Type__c}
+                new List<String>{workflowSchedule.Object_Type__c}
             	)[0].fields.getMap().get(criteriaField);
             if (field != null) fieldType = field.getDescribe().getType().name();
             switch on fieldType {
@@ -341,14 +206,13 @@ public class aspe_NewApexTriggerExtension {
         			operatorOptions.add(new SelectOption('<','Less Than'));
         			operatorOptions.add(new SelectOption('<=','Less Than or Equal To'));
                 }
-                when 'EMAIL','PHONE','PICKLIST','STRING','TEXTAREA','URL' {
+                when 'EMAIL','PHONE','PICKLIST','STRING','TEXTAREA','URL','REFERENCE' {
         			operatorOptions.add(new SelectOption('contains','Contains'));
         			operatorOptions.add(new SelectOption('starts_with','Starts With'));
         			operatorOptions.add(new SelectOption('ends_with','Ends With'));
         			operatorOptions.add(new SelectOption('not_contains','Does not Contain'));
         			operatorOptions.add(new SelectOption('not_starts_with','Does not Start With'));
         			operatorOptions.add(new SelectOption('not_ends_with','Does not End With'));
-                    
                 }
             }
         }
@@ -358,7 +222,7 @@ public class aspe_NewApexTriggerExtension {
     
     public List<SelectOption> getMinuteOptions() {
         List<SelectOption> options = new List<SelectOption>();
-        for(PicklistEntry option: Apex_Trigger__c.Minute__c.getDescribe().getPicklistValues()) {
+        for(PicklistEntry option: Workflow_Schedule__c.Minute__c.getDescribe().getPicklistValues()) {
             options.add(new SelectOption(option.getValue(),option.getLabel()));
         }
         
@@ -367,7 +231,7 @@ public class aspe_NewApexTriggerExtension {
     
     public List<SelectOption> getHourOptions() {
         List<SelectOption> options = new List<SelectOption>();
-        for(PicklistEntry option: Apex_Trigger__c.Hour__c.getDescribe().getPicklistValues()) {
+        for(PicklistEntry option: Workflow_Schedule__c.Hour__c.getDescribe().getPicklistValues()) {
             options.add(new SelectOption(option.getValue(),option.getLabel()));
         }
         
@@ -376,7 +240,7 @@ public class aspe_NewApexTriggerExtension {
     
     public List<SelectOption> getDayWeekOptions() {
         List<SelectOption> options = new List<SelectOption>();
-        for(PicklistEntry option: Apex_Trigger__c.Day_of_Week__c.getDescribe().getPicklistValues()) {
+        for(PicklistEntry option: Workflow_Schedule__c.Day_of_Week__c.getDescribe().getPicklistValues()) {
             options.add(new SelectOption(option.getValue(),option.getLabel()));
         }
         
@@ -385,7 +249,7 @@ public class aspe_NewApexTriggerExtension {
     
     public List<SelectOption> getDayMonthOptions() {
         List<SelectOption> options = new List<SelectOption>();
-        for(PicklistEntry option: Apex_Trigger__c.Day_of_Month__c.getDescribe().getPicklistValues()) {
+        for(PicklistEntry option: Workflow_Schedule__c.Day_of_Month__c.getDescribe().getPicklistValues()) {
             options.add(new SelectOption(option.getValue(),option.getLabel()));
         }
         
@@ -394,7 +258,7 @@ public class aspe_NewApexTriggerExtension {
     
     public List<SelectOption> getMonthOptions() {
         List<SelectOption> options = new List<SelectOption>();
-        for(PicklistEntry option: Apex_Trigger__c.Month__c.getDescribe().getPicklistValues()) {
+        for(PicklistEntry option: Workflow_Schedule__c.Month__c.getDescribe().getPicklistValues()) {
             options.add(new SelectOption(option.getValue(),option.getLabel()));
         }
         
@@ -406,29 +270,29 @@ public class aspe_NewApexTriggerExtension {
         String operator = '';
         String value = '';
         if (num == 1) {
-            field = apexTrigger.Criteria_Field_1__c;
-            operator = apexTrigger.Criteria_Operator_1__c;
-            value = apexTrigger.Criteria_Value_1__c;
+            field = workflowSchedule.Criteria_Field_1__c;
+            operator = workflowSchedule.Criteria_Operator_1__c;
+            value = workflowSchedule.Criteria_Value_1__c;
         }
         if (num == 2) {
-            field = apexTrigger.Criteria_Field_2__c;
-            operator = apexTrigger.Criteria_Operator_2__c;
-            value = apexTrigger.Criteria_Value_2__c;
+            field = workflowSchedule.Criteria_Field_2__c;
+            operator = workflowSchedule.Criteria_Operator_2__c;
+            value = workflowSchedule.Criteria_Value_2__c;
         }
         if (num == 3) {
-            field = apexTrigger.Criteria_Field_3__c;
-            operator = apexTrigger.Criteria_Operator_3__c;
-            value = apexTrigger.Criteria_Value_3__c;
+            field = workflowSchedule.Criteria_Field_3__c;
+            operator = workflowSchedule.Criteria_Operator_3__c;
+            value = workflowSchedule.Criteria_Value_3__c;
         }
         if (num == 4) {
-            field = apexTrigger.Criteria_Field_4__c;
-            operator = apexTrigger.Criteria_Operator_4__c;
-            value = apexTrigger.Criteria_Value_4__c;
+            field = workflowSchedule.Criteria_Field_4__c;
+            operator = workflowSchedule.Criteria_Operator_4__c;
+            value = workflowSchedule.Criteria_Value_4__c;
         }
         if (num == 5) {
-            field = apexTrigger.Criteria_Field_5__c;
-            operator = apexTrigger.Criteria_Operator_5__c;
-            value = apexTrigger.Criteria_Value_5__c;
+            field = workflowSchedule.Criteria_Field_5__c;
+            operator = workflowSchedule.Criteria_Operator_5__c;
+            value = workflowSchedule.Criteria_Value_5__c;
         }
         if ((field == null || field == '') && (operator == null || operator == '') && ( value == null || value == '')) return 'empty';
         if (field != null && field != '' && operator != null && operator != '' && value != null && value != '') {
@@ -445,15 +309,12 @@ public class aspe_NewApexTriggerExtension {
     private String SQLifyValue(String criteriaField, String value) {
             String fieldType = '';
             Schema.SObjectField field = Schema.describeSObjects(
-                new List<String>{apexTrigger.Object_Type__c}
+                new List<String>{workflowSchedule.Object_Type__c}
             	)[0].fields.getMap().get(criteriaField);
             if (field != null) fieldType = field.getDescribe().getType().name();
             switch on fieldType {
-                when 'COMBOBOX' {
-                    
-                }
-                when 'ID' {
-                    
+                when 'REFERENCE' {
+
                 }
                 when 'DATE' {
                     Datetime dt = Date.parse(value);
@@ -471,7 +332,8 @@ public class aspe_NewApexTriggerExtension {
                     
                 }
             }
-            return '\''+value+'\'';
+            return '\''+String.escapeSingleQuotes(value)+'\'';
+            // return '\''+value+'\'';
     }
 
     private String SQLifyCriteria(Integer num) {
@@ -479,99 +341,145 @@ public class aspe_NewApexTriggerExtension {
         String operator = '';
         String value = '';
         if (num == 1) {
-            field = apexTrigger.Criteria_Field_1__c;
-            operator = apexTrigger.Criteria_Operator_1__c;
-            value = apexTrigger.Criteria_Value_1__c;
+            field = workflowSchedule.Criteria_Field_1__c;
+            operator = workflowSchedule.Criteria_Operator_1__c;
+            value = workflowSchedule.Criteria_Value_1__c;
         }
         if (num == 2) {
-            field = apexTrigger.Criteria_Field_2__c;
-            operator = apexTrigger.Criteria_Operator_2__c;
-            value = apexTrigger.Criteria_Value_2__c;
+            field = workflowSchedule.Criteria_Field_2__c;
+            operator = workflowSchedule.Criteria_Operator_2__c;
+            value = workflowSchedule.Criteria_Value_2__c;
         }
         if (num == 3) {
-            field = apexTrigger.Criteria_Field_3__c;
-            operator = apexTrigger.Criteria_Operator_3__c;
-            value = apexTrigger.Criteria_Value_3__c;
+            field = workflowSchedule.Criteria_Field_3__c;
+            operator = workflowSchedule.Criteria_Operator_3__c;
+            value = workflowSchedule.Criteria_Value_3__c;
         }
         if (num == 4) {
-            field = apexTrigger.Criteria_Field_4__c;
-            operator = apexTrigger.Criteria_Operator_4__c;
-            value = apexTrigger.Criteria_Value_4__c;
+            field = workflowSchedule.Criteria_Field_4__c;
+            operator = workflowSchedule.Criteria_Operator_4__c;
+            value = workflowSchedule.Criteria_Value_4__c;
         }
         if (num == 5) {
-            field = apexTrigger.Criteria_Field_5__c;
-            operator = apexTrigger.Criteria_Operator_5__c;
-            value = apexTrigger.Criteria_Value_5__c;
+            field = workflowSchedule.Criteria_Field_5__c;
+            operator = workflowSchedule.Criteria_Operator_5__c;
+            value = workflowSchedule.Criteria_Value_5__c;
         }
+        Schema.SObjectField fieldDescribe = Schema.describeSObjects(
+            new List<String>{workflowSchedule.Object_Type__c}
+            )[0].fields.getMap().get(field);
+        if (fieldDescribe != null && fieldDescribe.getDescribe().getType().name() == 'REFERENCE'){
+            field = fieldDescribe.getDescribe().getRelationshipName() + '.Name';
+        }
+        String escapedValue = String.escapeSingleQuotes(value);
+        String escapedField = String.escapeSingleQuotes(field);
+        System.debug(escapedValue);
+        System.debug(escapedField);
         switch on operator {
            when 'contains' {
-               return field +' LIKE \'%'+value+'%\'';
+               return escapedField +' LIKE \'%'+escapedValue+'%\'';
            }
            when 'starts_with' {
-               return field +' LIKE \''+value+'%\'';
+               return escapedField +' LIKE \''+escapedValue+'%\'';
            }
            when 'ends_with' {
-               return field +' LIKE \'%'+value+'\'';
+               return escapedField +' LIKE \'%'+escapedValue+'\'';
            }
            when 'not_contains' {
-               return 'NOT (' + field +' LIKE \'%'+value+'%\')';
+               return 'NOT (' + escapedField +' LIKE \'%'+escapedValue+'%\')';
            }
            when 'not_starts_with' {
-               return 'NOT (' + field +' LIKE \''+value+'%\')';
+               return 'NOT (' + escapedField +' LIKE \''+escapedValue+'%\')';
            }
            when 'not_ends_with' {
-               return 'NOT (' + field +' LIKE \'%'+value+'\')';
+               return 'NOT (' + escapedField +' LIKE \'%'+escapedValue+'\')';
            }
            when 'is_empty' {
-               return '('+field+' = NULL OR '+field+' = \'\')';
+               return '('+escapedField+' = NULL OR '+escapedField+' = \'\')';
            }
            when 'is_not_empty' {
-               return '('+field+' != NULL AND '+field+' != \'\')';
+               return '('+escapedField+' != NULL AND '+escapedField+' != \'\')';
            }
            when else {
-               return field + ' ' + operator + ' '+SQLifyValue(field,value);
+               return escapedField + ' ' + String.escapeSingleQuotes(operator) + ' '+SQLifyValue(field,value);
            }
         }
+    }
 
+    private String cronifySelect(String selected) {
+        selected = selected.replaceAll('[\\[\\]]','').replaceAll(';', ',');
+        return ' ' + selected;
     }
 
     private Boolean validate() {
-        String cleanedFilterLogic = apexTrigger.Filter_Logic__c.replaceAll('[^() andor1-5]','');
+        String cleanedFilterLogic = workflowSchedule.Filter_Logic__c.replaceAll('[^() andorANDOR1-5]','');
         String singleCriteria = '';
-        if (cleanedFilterLogic != apexTrigger.Filter_Logic__c) {
+        if (workflowSchedule.Day_of_Month__c != '[*]' && workflowSchedule.Day_of_Week__c != '[*]') {
+            ApexPages.addmessage(new ApexPages.message(ApexPages.severity.WARNING,'Day of the Week and Day of the Month may not both be specified.'));
             return false;
         }
-        cleanedFilterLogic = cleanedFilterLogic.replaceAll('\\d', '{\\1}');
+        if (cleanedFilterLogic != workflowSchedule.Filter_Logic__c) {
+            ApexPages.addmessage(new ApexPages.message(ApexPages.severity.WARNING,'There is an invalid character in the criteria logic.'));
+            return false;
+        }
+        cleanedFilterLogic = cleanedFilterLogic.replaceAll('(\\d)', '{$1}');
         String sqlWhere = '';
-        if (!this.apexTrigger.Active__c) return true;
+        if (!this.workflowSchedule.Active__c) return true;
         if (getNoSelectedObject()) return false;
         for (Integer i = 1; i<=5; i++) {
-            singleCriteria = '';
+            // singleCriteria = '';
             switch on validateCriteria(i) {
                 when 'false' {
+                    ApexPages.addmessage(new ApexPages.message(ApexPages.severity.WARNING,'Criteria '+i+' is missing at least one component.'));
                     return false;
                 }
                 when 'true' {
                     if (sqlWhere.length() == 0) sqlWhere = ' WHERE '+cleanedFilterLogic;
-
-                    sqlWhere = sqlWhere.replaceAll('{'+String.valueOf(i)+'}', singleCriteria);
+                    Integer criteriaPosition = sqlWhere.indexOf('{'+String.valueOf(i)+'}');
+                    sqlWhere = sqlWhere.substring(0, criteriaPosition) + SQLifyCriteria(i) + sqlWhere.substring(criteriaPosition+3);
+                    // sqlWhere = sqlWhere.replaceAll('\\{'+String.valueOf(i)+'\\}', SQLifyCriteria(i));
                 }
                 when 'empty' {
-                    cleanedFilterLogic = cleanedFilterLogic.replaceAll('(AND )?{'+String.valueOf(i)+'}', '');
-                    sqlWhere = sqlWhere.replaceAll('(AND )?{'+String.valueOf(i)+'}', '');
+                    cleanedFilterLogic = cleanedFilterLogic.replaceAll('(AND )?\\{'+String.valueOf(i)+'\\}', '');
+                    sqlWhere = sqlWhere.replaceAll('(AND )?\\{'+String.valueOf(i)+'\\}', '');
                 }
             }
         }
-        String sql = 'SELECT Id FROM '+apexTrigger.Object_Type__c+sqlWhere;
+        String sql = 'SELECT Id FROM '+workflowSchedule.Object_Type__c+sqlWhere;
+        try {
+            System.debug(sql);
+            List<sObject> test = Database.query(sql);
+        } catch (Exception e) {
+            ApexPages.addmessage(new ApexPages.message(ApexPages.severity.WARNING,'Generated SOQL statement failed with the following error: "'+e.getMessage()+'".'));
+            return false;
+        }
+        workflowSchedule.Parsed_SQL__c = sql;
         return true;
     }
 
     public PageReference save() {
         Boolean valid = validate();
         if (!valid) return null;
+        String cronSched = '0' +
+            cronifySelect(workflowSchedule.Minute__c) +
+            cronifySelect(workflowSchedule.Hour__c) +
+            cronifySelect(workflowSchedule.Day_of_Month__c) +
+            cronifySelect(workflowSchedule.Month__c) +
+            cronifySelect(workflowSchedule.Day_of_Week__c);
+        cronSched = cronSched.replaceAll('(([\\d,]+ [\\d,]+ )\\*)$|(\\*( [\\d,]+ [\\d,]+))$', '\\2?\\4');
+        System.debug(cronSched);
         return null;
-        // upsert this.apexTrigger;
-        // PageReference pageRef = new PageReference('/'+this.apexTrigger.id);
+        // upsert this.workflowSchedule;
+        // CronTrigger existingTrigger = [SELECT Id FROM CronTrigger WHERE CronJobDetail.Name = :this.workflowSchedule.id];
+        // try {
+        //     aspe_WorkflowScheduleSchedule triggerSchedule = new aspe_WorkflowScheduleSchedule(this.workflowSchedule);
+        //     String sch = '20 30 8 10 2 ?';
+        //     String newTrigger = system.schedule(this.workflowSchedule.id, sch, triggerSchedule);
+
+        // } catch (Exception e) {
+            
+        // }
+        // PageReference pageRef = new PageReference('/'+this.workflowSchedule.id);
         // return pageRef;
     }
 }

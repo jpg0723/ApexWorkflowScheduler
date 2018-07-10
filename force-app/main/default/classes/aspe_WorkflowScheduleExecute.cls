@@ -1,7 +1,7 @@
-public class aspe_ApexTriggerExecute {
+public class aspe_WorkflowScheduleExecute {
     // Basic variable declaration
     
-    public Apex_Trigger__c apexTrigger {get; set;}
+    public Workflow_Schedule__c workflowSchedule {get; set;}
     List<String> apiNames =  new List<String>();
     String newApiName = '';
 
@@ -12,12 +12,12 @@ public class aspe_ApexTriggerExecute {
     
     // Constructor to pass the apextrigger object into class
 
-    public aspe_ApexTriggerExecute(Apex_Trigger__c apexTrigger) {
-        this.apexTrigger = apexTrigger;
+    public aspe_WorkflowScheduleExecute(Workflow_Schedule__c workflowSchedule) {
+        this.workflowSchedule = workflowSchedule;
     
         // Adds all the field names into a list without the other data fields
 
-        Schema.DescribeSObjectResult r = Apex_Trigger__c.sObjectType.getDescribe();
+        Schema.DescribeSObjectResult r = Workflow_Schedule__c.sObjectType.getDescribe();
         for(string apiName : r.fields.getMap().keySet())
         {
             if(apiName.indexOf('criteria_field') != -1){

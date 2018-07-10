@@ -139,11 +139,11 @@
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_NewApexTriggerExtension.cls",
             "isDirectory": false,
             "isMetadataFile": false,
-            "size": 22024,
-            "modifiedTime": 1530913191000,
-            "changeTime": 1530913191000,
+            "size": 22057,
+            "modifiedTime": 1530913578000,
+            "changeTime": 1530913578000,
             "isWorkspace": false,
-            "contentHash": "c16e77fc0d1374ed7dd8be2166a17c540be04d83"
+            "contentHash": "25e1b85ce8a1ea508cd539de47c72e136458cb44"
         }
     ],
     [
@@ -629,11 +629,11 @@
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/pages/aspe_NewApexTrigger.page",
             "isDirectory": false,
             "isMetadataFile": false,
-            "size": 18026,
-            "modifiedTime": 1530913275000,
-            "changeTime": 1530913275000,
+            "size": 18025,
+            "modifiedTime": 1530913554000,
+            "changeTime": 1530913554000,
             "isWorkspace": false,
-            "contentHash": "2b81289d758e9fec55b3921e3a504ad6234a846f"
+            "contentHash": "211da9ca9aff5def01b227a435ddb5e804e6a596"
         }
     ],
     [

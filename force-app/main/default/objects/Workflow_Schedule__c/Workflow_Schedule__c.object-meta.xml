@@ -52,14 +52,12 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ReadWrite</externalSharingModel>
-    <label>Apex Trigger</label>
+    <label>Workflow Schedule</label>
     <nameField>
-        <displayFormat>{0000}</displayFormat>
-        <label>Apex Trigger Name</label>
-        <type>AutoNumber</type>
+        <label>Workflow Schedule Name</label>
+        <type>Text</type>
     </nameField>
-    <pluralLabel>Apex Triggers</pluralLabel>
+    <pluralLabel>Workflow Schedules</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
