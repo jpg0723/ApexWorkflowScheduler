@@ -5,12 +5,9 @@ global class aspe_WorkflowScheduleSchedule implements Schedulable  {
         this.workflowSchedule = workflowSchedule;
     }
 
-    public aspe_WorkflowScheduleSchedule() {
-        
-    }
-
     global void execute(SchedulableContext SC) {
-        // aspe_WorkflowScheduleExecute AT = new aspe_WorkflowScheduleExecute(this.workflowSchedule);
+        aspe_WorkflowScheduleExecute AT = new aspe_WorkflowScheduleExecute();
+        AT.execute(this.workflowSchedule);
     }
 
 }

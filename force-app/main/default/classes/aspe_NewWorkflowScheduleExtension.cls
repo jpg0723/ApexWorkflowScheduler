@@ -6,6 +6,8 @@ public class aspe_NewWorkflowScheduleExtension {
     public String dayWeekSelect;
     public String dayMonthSelect;
     public String monthSelect;
+    public String action {get; set;}
+    public String isScheduled;
     
     public String getMinuteSelect() {
         return this.workflowSchedule.Minute__c;
@@ -77,13 +79,56 @@ public class aspe_NewWorkflowScheduleExtension {
     }
     
     public aspe_NewWorkflowScheduleExtension(ApexPages.StandardController stdController) {
-        this.workflowSchedule = (Workflow_Schedule__c)stdController.getRecord();
-        this.workflowSchedule.Minute__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Minute__c);
-        this.workflowSchedule.Hour__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Hour__c);
-        this.workflowSchedule.Day_of_Week__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Day_of_Week__c);
-        this.workflowSchedule.Day_of_Month__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Day_of_Month__c);
-        this.workflowSchedule.Month__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Month__c);
-        this.workflowSchedule.Filter_Logic__c = '1 AND 2 AND 3 AND 4 AND 5';
+        String var= ApexPages.currentPage().getParameters().get('Id'); 
+        if(var!=null) {
+            this.workflowSchedule = [SELECT Id,
+                Minute__c,
+                Hour__c,
+                Day_of_Week__c,
+                Day_of_Month__c,
+                Month__c,
+                Filter_Logic__c,
+                Name,
+                Active__c,
+                Criteria_Field_1__c,
+                Criteria_Field_2__c,
+                Criteria_Field_3__c,
+                Criteria_Field_4__c,
+                Criteria_Field_5__c,
+                Criteria_Operator_1__c,
+                Criteria_Operator_2__c,
+                Criteria_Operator_3__c,
+                Criteria_Operator_4__c,
+                Criteria_Operator_5__c,
+                Criteria_Value_1__c,
+                Criteria_Value_2__c,
+                Criteria_Value_3__c,
+                Criteria_Value_4__c,
+                Criteria_Value_5__c,
+                Last_Run__c,
+                Object_Type__c,
+                Parsed_SQL__c FROM Workflow_Schedule__c WHERE Id = :var];
+            this.action = 'Edit';
+        } else {
+            this.workflowSchedule = (Workflow_Schedule__c)stdController.getRecord();
+            this.workflowSchedule.Minute__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Minute__c);
+            this.workflowSchedule.Hour__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Hour__c);
+            this.workflowSchedule.Day_of_Week__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Day_of_Week__c);
+            this.workflowSchedule.Day_of_Month__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Day_of_Month__c);
+            this.workflowSchedule.Month__c = getDefaultValueAsString(Schema.SObjectType.Workflow_Schedule__c.fields.Month__c);
+            this.workflowSchedule.Filter_Logic__c = '1 AND 2 AND 3 AND 4 AND 5';
+            this.action = 'New';
+        }
+    }
+
+    public String getIsScheduled() {
+        try {
+            CronTrigger existingTrigger = [SELECT Id,NextFireTime FROM CronTrigger WHERE CronJobDetail.Name = :this.workflowSchedule.id];
+            return 'This workflow is currently scheduled and will run next at '+existingTrigger.NextFireTime.format('MM/dd/yyyy hh:mm:ss aaa')+'.';
+        } catch (Exception e) {
+            return 'This workflow is not currently scheduled.';
+        }
+
     }
     
     private String getDefaultValueAsString(Schema.DescribeFieldResult field) {
@@ -331,6 +376,9 @@ public class aspe_NewWorkflowScheduleExtension {
                 when 'MULTIPICKLIST' {
                     
                 }
+                when 'CURRENCY','DOUBLE','INTEGER','PERCENT','BOOLEAN' {
+                    return String.escapeSingleQuotes(value);
+                }
             }
             return '\''+String.escapeSingleQuotes(value)+'\'';
             // return '\''+value+'\'';
@@ -386,13 +434,13 @@ public class aspe_NewWorkflowScheduleExtension {
                return escapedField +' LIKE \'%'+escapedValue+'\'';
            }
            when 'not_contains' {
-               return 'NOT (' + escapedField +' LIKE \'%'+escapedValue+'%\')';
+               return '(NOT ' + escapedField +' LIKE \'%'+escapedValue+'%\')';
            }
            when 'not_starts_with' {
-               return 'NOT (' + escapedField +' LIKE \''+escapedValue+'%\')';
+               return '(NOT ' + escapedField +' LIKE \''+escapedValue+'%\')';
            }
            when 'not_ends_with' {
-               return 'NOT (' + escapedField +' LIKE \'%'+escapedValue+'\')';
+               return '(NOT ' + escapedField +' LIKE \'%'+escapedValue+'\')';
            }
            when 'is_empty' {
                return '('+escapedField+' = NULL OR '+escapedField+' = \'\')';
@@ -412,6 +460,7 @@ public class aspe_NewWorkflowScheduleExtension {
     }
 
     private Boolean validate() {
+        if (!this.workflowSchedule.Active__c) return true;
         String cleanedFilterLogic = workflowSchedule.Filter_Logic__c.replaceAll('[^() andorANDOR1-5]','');
         String singleCriteria = '';
         if (workflowSchedule.Day_of_Month__c != '[*]' && workflowSchedule.Day_of_Week__c != '[*]') {
@@ -424,7 +473,6 @@ public class aspe_NewWorkflowScheduleExtension {
         }
         cleanedFilterLogic = cleanedFilterLogic.replaceAll('(\\d)', '{$1}');
         String sqlWhere = '';
-        if (!this.workflowSchedule.Active__c) return true;
         if (getNoSelectedObject()) return false;
         for (Integer i = 1; i<=5; i++) {
             // singleCriteria = '';
@@ -451,6 +499,7 @@ public class aspe_NewWorkflowScheduleExtension {
             List<sObject> test = Database.query(sql);
         } catch (Exception e) {
             ApexPages.addmessage(new ApexPages.message(ApexPages.severity.WARNING,'Generated SOQL statement failed with the following error: "'+e.getMessage()+'".'));
+            System.debug(e.getMessage());
             return false;
         }
         workflowSchedule.Parsed_SQL__c = sql;
@@ -460,26 +509,39 @@ public class aspe_NewWorkflowScheduleExtension {
     public PageReference save() {
         Boolean valid = validate();
         if (!valid) return null;
-        String cronSched = '0' +
-            cronifySelect(workflowSchedule.Minute__c) +
-            cronifySelect(workflowSchedule.Hour__c) +
-            cronifySelect(workflowSchedule.Day_of_Month__c) +
-            cronifySelect(workflowSchedule.Month__c) +
-            cronifySelect(workflowSchedule.Day_of_Week__c);
-        cronSched = cronSched.replaceAll('(([\\d,]+ [\\d,]+ )\\*)$|(\\*( [\\d,]+ [\\d,]+))$', '\\2?\\4');
-        System.debug(cronSched);
-        return null;
-        // upsert this.workflowSchedule;
-        // CronTrigger existingTrigger = [SELECT Id FROM CronTrigger WHERE CronJobDetail.Name = :this.workflowSchedule.id];
-        // try {
-        //     aspe_WorkflowScheduleSchedule triggerSchedule = new aspe_WorkflowScheduleSchedule(this.workflowSchedule);
-        //     String sch = '20 30 8 10 2 ?';
-        //     String newTrigger = system.schedule(this.workflowSchedule.id, sch, triggerSchedule);
-
-        // } catch (Exception e) {
-            
-        // }
-        // PageReference pageRef = new PageReference('/'+this.workflowSchedule.id);
-        // return pageRef;
+        if (this.workflowSchedule.Active__c) {
+            String cronSched = '0' +
+                cronifySelect(workflowSchedule.Minute__c) +
+                cronifySelect(workflowSchedule.Hour__c) +
+                cronifySelect(workflowSchedule.Day_of_Month__c) +
+                cronifySelect(workflowSchedule.Month__c) +
+                cronifySelect(workflowSchedule.Day_of_Week__c);
+            cronSched = cronSched.replaceAll('(([\\d,]+ [\\d,*]+ )\\*)$|(\\*( [\\d,*]+ [\\d,]+))$|((\\* [\\d,*]+ )\\*)$', '$2$6?$4');
+            System.debug(cronSched);
+            CronTrigger existingTrigger = null;
+            try {
+                existingTrigger = [SELECT Id FROM CronTrigger WHERE CronJobDetail.Name = :this.workflowSchedule.id];
+            } catch (Exception e) {}
+            try {
+                if (existingTrigger != null) System.abortJob(existingTrigger.Id);
+                upsert this.workflowSchedule;
+                aspe_WorkflowScheduleSchedule triggerSchedule = new aspe_WorkflowScheduleSchedule(this.workflowSchedule);
+                String newTrigger = System.schedule(this.workflowSchedule.id, cronSched, triggerSchedule);
+            } catch (Exception e) {
+                ApexPages.addmessage(new ApexPages.message(ApexPages.severity.WARNING,'Failed to schedule job: "'+e.getMessage()+'"'));
+                return null;
+            }
+            PageReference pageRef = new PageReference('/'+this.workflowSchedule.id);
+            return pageRef;
+        } else {
+            upsert this.workflowSchedule;
+            CronTrigger existingTrigger = null;
+            try {
+                existingTrigger = [SELECT Id FROM CronTrigger WHERE CronJobDetail.Name = :this.workflowSchedule.id];
+            } catch (Exception e) {}
+            if (existingTrigger != null) System.abortJob(existingTrigger.Id);
+            PageReference pageRef = new PageReference('/'+this.workflowSchedule.id);
+            return pageRef;
+        }
     }
 }
