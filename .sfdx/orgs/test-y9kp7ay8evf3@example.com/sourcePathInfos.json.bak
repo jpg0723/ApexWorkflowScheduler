@@ -102,15 +102,15 @@
     [
         "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_WorkflowScheduleExecute.cls",
         {
+            "state": "u",
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_WorkflowScheduleExecute.cls",
             "isDirectory": false,
-            "size": 7629,
-            "modifiedTime": 1531333952000,
-            "changeTime": 1531333952000,
-            "contentHash": "62e51709b766222f63d137db0d9b115067cac824",
             "isMetadataFile": false,
-            "state": "u",
-            "isWorkspace": false
+            "size": 7781,
+            "modifiedTime": 1531416865000,
+            "changeTime": 1531416865000,
+            "isWorkspace": false,
+            "contentHash": "fdebf5294d72ba733ded9e22f1b123f69db69ae0"
         }
     ],
     [
@@ -844,14 +844,14 @@
     [
         "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/Test_aspe_NewWorkflowScheduleExtension.cls",
         {
-            "state": "u",
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/Test_aspe_NewWorkflowScheduleExtension.cls",
             "isDirectory": false,
-            "isMetadataFile": false,
             "size": 3243,
             "modifiedTime": 1531416690000,
             "changeTime": 1531416690000,
-            "contentHash": "bbaf6768ac81e15e449826b9408c47f47bcbd7f7"
+            "contentHash": "bbaf6768ac81e15e449826b9408c47f47bcbd7f7",
+            "isMetadataFile": false,
+            "state": "u"
         }
     ],
     [

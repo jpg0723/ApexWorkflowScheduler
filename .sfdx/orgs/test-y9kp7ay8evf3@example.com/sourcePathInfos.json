@@ -102,15 +102,15 @@
     [
         "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_WorkflowScheduleExecute.cls",
         {
-            "state": "u",
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/classes/aspe_WorkflowScheduleExecute.cls",
             "isDirectory": false,
-            "isMetadataFile": false,
             "size": 7781,
             "modifiedTime": 1531416865000,
             "changeTime": 1531416865000,
-            "isWorkspace": false,
-            "contentHash": "fdebf5294d72ba733ded9e22f1b123f69db69ae0"
+            "contentHash": "fdebf5294d72ba733ded9e22f1b123f69db69ae0",
+            "isMetadataFile": false,
+            "state": "u",
+            "isWorkspace": false
         }
     ],
     [
@@ -698,16 +698,15 @@
     [
         "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/profiles",
         {
+            "state": "u",
             "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/profiles",
             "isDirectory": true,
-            "size": 204,
-            "modifiedTime": 1530898903000,
-            "changeTime": 1530898903000,
-            "contentHash": "15d8b68bef3142dc9da80c94e822e4e0e39b6ecb",
             "isMetadataFile": false,
-            "state": "u",
+            "size": 102,
+            "modifiedTime": 1531423276000,
+            "changeTime": 1531423276000,
             "isWorkspace": false,
-            "isArtifactRoot": false
+            "contentHash": "dd4bc5d00d5b87ac9dcfa94ec543d354d095c25c"
         }
     ],
     [
@@ -719,51 +718,6 @@
             "modifiedTime": 1531254992000,
             "changeTime": 1531254992000,
             "contentHash": "352e9240aa735d928ee1f326255f7b2463a77a2a",
-            "isMetadataFile": true,
-            "state": "u",
-            "isWorkspace": false,
-            "isArtifactRoot": false
-        }
-    ],
-    [
-        "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/profiles/Custom: Marketing Profile.profile-meta.xml",
-        {
-            "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/profiles/Custom: Marketing Profile.profile-meta.xml",
-            "isDirectory": false,
-            "size": 8583,
-            "modifiedTime": 1531255637000,
-            "changeTime": 1531255637000,
-            "contentHash": "2df1054722b3b1f485e0491afbaa3041bc0f3323",
-            "isMetadataFile": true,
-            "state": "u",
-            "isWorkspace": false,
-            "isArtifactRoot": false
-        }
-    ],
-    [
-        "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/profiles/Custom: Sales Profile.profile-meta.xml",
-        {
-            "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/profiles/Custom: Sales Profile.profile-meta.xml",
-            "isDirectory": false,
-            "size": 8583,
-            "modifiedTime": 1531255636000,
-            "changeTime": 1531255636000,
-            "contentHash": "2df1054722b3b1f485e0491afbaa3041bc0f3323",
-            "isMetadataFile": true,
-            "state": "u",
-            "isWorkspace": false,
-            "isArtifactRoot": false
-        }
-    ],
-    [
-        "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/profiles/Custom: Support Profile.profile-meta.xml",
-        {
-            "sourcePath": "/Users/joseph/Documents/ASPE/Salesforce/SFDX/Projects/Apex Trigger/apextrigger/force-app/main/default/profiles/Custom: Support Profile.profile-meta.xml",
-            "isDirectory": false,
-            "size": 8921,
-            "modifiedTime": 1531255633000,
-            "changeTime": 1531255633000,
-            "contentHash": "6a4da38b25e420d14e301ec55f9eb74d74a9545d",
             "isMetadataFile": true,
             "state": "u",
             "isWorkspace": false,

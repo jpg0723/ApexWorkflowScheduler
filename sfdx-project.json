@@ -4,14 +4,18 @@
             "path": "force-app",
             "default": true,
             "package": "Workflow Schedule",
-            "versionName": "ver 0.1",
-            "versionNumber": "0.1.0.NEXT"
+            "versionName": "ver 1.0",
+            "versionNumber": "1.0.0.NEXT"
         }
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "43.0",
     "packageAliases": {
-        "Workflow Schedule": "0Ho37000000CaR7CAK"
+        "Workflow Schedule": "0Ho37000000CaR7CAK",
+        "Workflow Schedule@1.0.0-1": "04t37000000EYW0AAO",
+        "Workflow Schedule@1.0.0-2": "04t37000000EYW5AAO",
+        "Workflow Schedule@1.0.0-3": "04t37000000EYWAAA4",
+        "Workflow Schedule@1.1.0-1": "04t37000000EYWFAA4"
     }
 }

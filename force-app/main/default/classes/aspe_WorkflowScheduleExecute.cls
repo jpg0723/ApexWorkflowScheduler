@@ -101,13 +101,17 @@ public class aspe_WorkflowScheduleExecute {
         Schema.SObjectField fieldDescribe = Schema.describeSObjects(
             new List<String>{workflowSchedule.Object_Type__c}
             )[0].fields.getMap().get(field);
-        if (fieldDescribe != null && fieldDescribe.getDescribe().getType().name() == 'REFERENCE'){
+        String fieldType = fieldDescribe.getDescribe().getType().name();
+        if (fieldDescribe != null && fieldType == 'REFERENCE'){
             field = fieldDescribe.getDescribe().getRelationshipName() + '.Name';
         }
         String escapedValue = String.escapeSingleQuotes(value);
         String escapedField = String.escapeSingleQuotes(field);
         System.debug(escapedValue);
         System.debug(escapedField);
+
+        List<String> nonStringTypes = new List<String>{'DATE','TIME','DATETIME','CURRENCY','DOUBLE','INTEGER','PERCENT','BOOLEAN'};
+
         switch on operator {
            when 'contains' {
                return escapedField +' LIKE \'%'+escapedValue+'%\'';
@@ -128,10 +132,12 @@ public class aspe_WorkflowScheduleExecute {
                return '(NOT ' + escapedField +' LIKE \'%'+escapedValue+'\')';
            }
            when 'is_empty' {
-               return '('+escapedField+' = NULL OR '+escapedField+' = \'\')';
+               if (nonStringTypes.contains(fieldType)) return escapedField+' = NULL';
+               else return '('+escapedField+' = NULL OR '+escapedField+' = \'\')';
            }
            when 'is_not_empty' {
-               return '('+escapedField+' != NULL AND '+escapedField+' != \'\')';
+               if (nonStringTypes.contains(fieldType)) return escapedField+' != NULL';
+                else return '('+escapedField+' != NULL AND '+escapedField+' != \'\')';
            }
            when else {
                return escapedField + ' ' + String.escapeSingleQuotes(operator) + ' '+SQLifyValue(field,value);
