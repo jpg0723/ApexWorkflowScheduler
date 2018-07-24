@@ -340,7 +340,7 @@ public class aspe_NewWorkflowScheduleExtension {
             value = workflowSchedule.Criteria_Value_5__c;
         }
         if ((field == null || field == '') && (operator == null || operator == '') && ( value == null || value == '')) return 'empty';
-        if (field != null && field != '' && operator != null && operator != '' && value != null && value != '') {
+        if ((field != null && field != '' && operator != null && operator != '' && value != null && value != '') || (field != null && field != '' && (operator == 'is_empty' || operator == 'is_not_empty'))) {
             Boolean listContainsOperator = false;
             for (SelectOption so: operatorOptions(num)) {
                 if (so.getValue() == operator) listContainsOperator = true;
