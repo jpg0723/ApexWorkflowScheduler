@@ -357,12 +357,12 @@ public class aspe_NewWorkflowScheduleExtension {
                 new List<String>{workflowSchedule.Object_Type__c}
             	)[0].fields.getMap().get(criteriaField);
             if (field != null) fieldType = field.getDescribe().getType().name();
+            List<String> dateLiterals = new List<String>{'YEST','TODA','TOMO','LAST','THIS','NEXT'};
             switch on fieldType {
                 when 'REFERENCE' {
 
                 }
                 when 'DATE' {
-                    List<String> dateLiterals = new List<String>{'YEST','TODA','TOMO','LAST','THIS','NEXT'};
                     if (dateLiterals.contains(value.substring(0,4))) {
                         return value;
                     } else {
@@ -371,8 +371,12 @@ public class aspe_NewWorkflowScheduleExtension {
                     }
                 }
                 when 'DATETIME' {
-                    Datetime dt = DateTime.parse(value);
-                    return dt.format('yyyy-MM-dd\'T\'HH:mm:ssXXX');
+                    if (dateLiterals.contains(value.substring(0,4))) {
+                        return value;
+                    } else {
+                        Datetime dt = DateTime.parse(value);
+                        return dt.format('yyyy-MM-dd\'T\'HH:mm:ssXXX');
+                    }
                 }
                 when 'TIME' {
                     Datetime dt = DateTime.parse('1/1/2000 '+value);
