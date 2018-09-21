@@ -172,15 +172,17 @@ public class aspe_WorkflowScheduleExecute {
         this.workflowSchedule = workflowSchedule;
 
         if (this.workflowSchedule.Parsed_SQL__c != null && this.workflowSchedule.Parsed_SQL__c != '') {
-            List<sObject> test = Database.query(this.workflowSchedule.Parsed_SQL__c);
-            update test;
+            // List<sObject> test = Database.query(this.workflowSchedule.Parsed_SQL__c);
+            // update test;
+            aspe_BatchUpdate newBatch = new aspe_BatchUpdate(this.workflowSchedule.Parsed_SQL__c);
+            Database.executeBatch(newBatch, 50);
         } else {
             String sql = generateSql();
             try {
                 List<sObject> test = Database.query(sql);
                 update test;
-                workflowSchedule.Parsed_SQL__c = sql;
-                update workflowSchedule;
+                aspe_BatchUpdate newBatch = new aspe_BatchUpdate(this.workflowSchedule.Parsed_SQL__c);
+                Database.executeBatch(newBatch, 50);
             } catch (Exception e) {
                 throw e;
             }
