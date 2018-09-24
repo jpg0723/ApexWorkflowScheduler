@@ -179,10 +179,12 @@ public class aspe_WorkflowScheduleExecute {
         } else {
             String sql = generateSql();
             try {
-                List<sObject> test = Database.query(sql);
-                update test;
-                aspe_BatchUpdate newBatch = new aspe_BatchUpdate(this.workflowSchedule.Parsed_SQL__c);
+                // List<sObject> test = Database.query(sql);
+                // update test;
+                aspe_BatchUpdate newBatch = new aspe_BatchUpdate(sql);
                 Database.executeBatch(newBatch, 50);
+                workflowSchedule.Parsed_SQL__c = sql;
+                update workflowSchedule;
             } catch (Exception e) {
                 throw e;
             }

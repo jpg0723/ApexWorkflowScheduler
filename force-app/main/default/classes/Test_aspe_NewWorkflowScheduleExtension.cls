@@ -3,7 +3,15 @@ private class Test_aspe_NewWorkflowScheduleExtension {
     static aspe_NewWorkflowScheduleExtension ext;
 
     private static void init() {
-
+        Opportunity opp = new Opportunity(
+            Name = 'Hello',
+            CloseDate = Date.today()+256,
+            IsPrivate = false,
+            Probability = 10,
+            StageName = 'Prospecting'
+        );
+        
+        insert opp;
     }
 
     static testMethod void testWorkflowSchedules() { 
@@ -59,9 +67,9 @@ private class Test_aspe_NewWorkflowScheduleExtension {
         ext.workflowSchedule.Criteria_Operator_1__c = '>=';
         ext.workflowSchedule.Criteria_Value_1__c = '11/25/2018';
 
-        ext.workflowSchedule.Criteria_Field_2__c = 'TotalOpportunityQuantity';
+        ext.workflowSchedule.Criteria_Field_2__c = 'Probability';
         ext.workflowSchedule.Criteria_Operator_2__c = '=';
-        ext.workflowSchedule.Criteria_Value_2__c = '2';
+        ext.workflowSchedule.Criteria_Value_2__c = '10';
 
         ext.workflowSchedule.Criteria_Field_3__c = 'AccountId';
         ext.workflowSchedule.Criteria_Operator_3__c = 'not_contains';
@@ -82,9 +90,13 @@ private class Test_aspe_NewWorkflowScheduleExtension {
         aspe_WorkflowScheduleExecute scheduledJob = new aspe_WorkflowScheduleExecute();
         scheduledJob.execute(schedule);
 
+        System.debug(schedule.Parsed_SQL__c);
+
         schedule.Parsed_SQL__c = '';
         update schedule;
         scheduledJob.execute(schedule);
+
+        System.debug(schedule.Parsed_SQL__c);
 
         delete schedule;
         Test.stopTest();
